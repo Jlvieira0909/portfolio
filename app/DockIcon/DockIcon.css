@@ -1,0 +1,81 @@
+.DockLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  height: 84px;
+  width: 64px;
+  transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  text-decoration: none;
+}
+
+.DockIcon {
+  width: 64px;
+  height: 64px;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+  transform-origin: bottom;
+  position: absolute;
+  bottom: 10px;
+}
+
+.DockLink:hover {
+  width: 96px;
+}
+
+.DockLink:hover .DockIcon {
+  width: 96px;
+  height: 96px;
+  transform: translateY(-10px);
+  filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.3));
+}
+
+.DockLink:has(+ .DockLink:hover),
+.DockLink:hover + .DockLink {
+  width: 80px;
+}
+
+.DockLink:has(+ .DockLink:hover) .DockIcon,
+.DockLink:hover + .DockLink .DockIcon {
+  width: 80px;
+  height: 80px;
+  transform: translateY(-5px);
+}
+
+.DockLink:has(+ .DockLink + .DockLink:hover),
+.DockLink:hover + .DockLink + .DockLink {
+  width: 72px;
+}
+
+.DockLink:has(+ .DockLink + .DockLink:hover) .DockIcon,
+.DockLink:hover + .DockLink + .DockLink .DockIcon {
+  width: 72px;
+  height: 72px;
+  transform: translateY(-2px);
+}
+
+.DockLinkText {
+  position: absolute;
+  top: -58px;
+  background: rgba(30, 30, 30, 0.6);
+  backdrop-filter: blur(10px);
+  color: #ffffff !important;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none !important;
+  z-index: 100;
+}
+
+.DockLink:hover .DockLinkText {
+  opacity: 1;
+  transform: translateY(0);
+}
