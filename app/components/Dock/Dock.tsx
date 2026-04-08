@@ -7,21 +7,18 @@ export default function Dock() {
       <div className="DockNavigation">
         <DockIcon href="/home" text="Home" iconSrc="/icons/Menu.png" />
         <DockIcon href="/search" text="Search" iconSrc="/icons/Finder.png" />
+        <DockIcon href="/safari" text="Safari" iconSrc="/icons/Safari.png" />
         <DockIcon
-          href="/settings"
-          text="Settings"
-          iconSrc="/icons/Safari.png"
-        />
-        <DockIcon
-          href="/settings"
-          text="Settings"
+          href="/projects"
+          text="Projects"
           iconSrc="/icons/Folder.png"
         />
         <DockIcon
-          href="/settings"
-          text="Settings"
+          href="/terminal"
+          text="Terminal"
           iconSrc="/icons/Terminal.png"
         />
+        <DockIcon href="/spotify" text="Spotify" iconSrc="/icons/Spotify.png" />
       </div>
     </div>
   );
