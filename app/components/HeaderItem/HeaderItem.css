@@ -1,0 +1,84 @@
+.HeaderItemContainer {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  cursor: default;
+  border-radius: 4px;
+  transition: background-color 0.1s;
+}
+
+.HeaderItemContainer.active,
+.HeaderItemContainer:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.HeaderItemLabel {
+  font-size: 13px;
+  font-weight: 500;
+  color: #000;
+  display: flex;
+  align-items: center;
+}
+
+.HeaderItemLabel.bold {
+  font-weight: 700;
+}
+
+.HeaderDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 2px;
+  background: rgba(245, 245, 245, 0.85);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  min-width: 220px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.MenuItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 10px;
+  font-size: 13px;
+  color: #000;
+  border-radius: 4px;
+  cursor: default;
+}
+
+.MenuItem:hover {
+  background-color: #3b7cff;
+  color: #fff;
+}
+
+.MenuShortcut {
+  font-size: 12px;
+  opacity: 0.6;
+  letter-spacing: 1px;
+}
+
+.MenuItem:hover .MenuShortcut {
+  color: #fff;
+  opacity: 0.9;
+}
+
+.MenuDivider {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 4px 0;
+}
+
+@media (max-width: 768px) {
+  .HeaderDropdown {
+    min-width: 180px;
+  }
+}
