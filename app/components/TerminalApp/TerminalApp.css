@@ -1,0 +1,25 @@
+.TerminalContainer {
+  background-color: #1e1e1e;
+  height: 100%;
+  padding: 12px;
+  font-family: "Menlo", "Monaco", "Courier New", monospace;
+  color: #fff;
+  font-size: 13px;
+  overflow-y: auto;
+}
+
+.TerminalLine {
+  margin: 0;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.TerminalCursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
