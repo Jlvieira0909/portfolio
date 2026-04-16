@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import "./HeaderItem.css";
 
 interface MenuItem {
-  name: string;
+  name?: string;
   shortcut?: string;
   divider?: boolean;
   onClick?: () => void;
@@ -54,7 +54,7 @@ export default function HeaderItem({
                   <span className="MenuShortcut">{item.shortcut}</span>
                 )}
               </div>
-            ),
+            )
           )}
         </div>
       )}
