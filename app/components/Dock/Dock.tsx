@@ -18,7 +18,7 @@ export default function Dock({
     <div className="DockContainer">
       <div className="DockNavigation">
         <DockIcon
-          href="/home"
+          href="/"
           text="Home"
           iconSrc="/icons/Menu.png"
           isActive={true}
@@ -61,7 +61,7 @@ export default function Dock({
           text="Projects"
           iconSrc="/icons/Folder.png"
           isActive={activeApps.includes("projetos-window")}
-          onClick={() => toggleApp("projetos-window")}
+          onClick={() => (window.location.href = "/projects")}
         />
         <DockIcon href="/trash" text="Trash" iconSrc="/icons/Trash.png" />
       </div>

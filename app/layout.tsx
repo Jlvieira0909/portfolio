@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "João Luiz - Web Creative",
+  title: "João Vieira - Web Creative",
   description: "Created by yours truly",
 };
 

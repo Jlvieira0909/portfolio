@@ -14,13 +14,13 @@
   user-select: none;
   will-change: transform;
   position: relative;
-  z-index: 1;
+  z-index: 10;
   outline: none;
   -webkit-tap-highlight-color: transparent;
 }
 
 .DesktopItem.dragging {
-  z-index: 50;
+  z-index: 20;
   opacity: 0.9;
   filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.2));
 }
@@ -47,4 +47,25 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.DesktopItem.selected:not(.dragging) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.DesktopItem.selected:not(.dragging) .IconContainer::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background-color: rgba(10, 132, 255, 0.3);
+  border-radius: 8px;
+  z-index: -1;
+}
+
+.DesktopItem.selected:not(.dragging) .DesktopItemText {
+  background-color: rgb(10, 132, 255);
+  color: #fff;
 }

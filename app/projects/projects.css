@@ -1,0 +1,242 @@
+.ProjectsContainer {
+  width: 100vw;
+  height: calc(100vh - 28px);
+  margin-top: 28px;
+  background-color: #f4f5f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.FinderWindow {
+  width: 100%;
+  max-width: 1000px;
+  height: 75vh;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  display: flex;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.FinderSidebar {
+  width: 220px;
+  background: rgba(245, 245, 247, 0.9);
+  border-right: 1px solid #e0e0e0;
+  padding: 20px 10px;
+  overflow-y: auto;
+}
+
+.SidebarSection {
+  margin-bottom: 24px;
+}
+
+.SidebarSection h3 {
+  font-size: 11px;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  padding-left: 10px;
+}
+
+.SidebarSection ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.SidebarSection li {
+  font-size: 13px;
+  color: #333;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.SidebarSection li:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.SidebarSection li.active {
+  background: #dcdcdc;
+  font-weight: 500;
+}
+
+.TagDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.TagDot.red {
+  background: #ff5f56;
+}
+.TagDot.orange {
+  background: #ffbd2e;
+}
+.TagDot.yellow {
+  background: #facc15;
+}
+.TagDot.green {
+  background: #27c93f;
+}
+.TagDot.blue {
+  background: #0a84ff;
+}
+
+.FinderMain {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+.FinderTopbar {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid #e0e0e0;
+  background: #ffffff;
+}
+
+.NavControls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.NavControls button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #555;
+  cursor: pointer;
+}
+
+.NavControls button:disabled {
+  color: #ccc;
+}
+
+.CurrentFolder {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.ViewControls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ViewToggle {
+  display: flex;
+  background: #f0f0f0;
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.ViewToggle span {
+  padding: 4px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #666;
+}
+
+.ViewToggle span.active {
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.SearchBar {
+  display: flex;
+  align-items: center;
+  background: #f0f0f0;
+  padding: 4px 10px;
+  border-radius: 6px;
+  gap: 6px;
+}
+
+.SearchBar input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 13px;
+  width: 120px;
+}
+
+.FinderGrid {
+  flex: 1;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 40px;
+  overflow-y: auto;
+}
+
+.ProjectFolder {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ProjectThumbnail {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #f5f5f5;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 12px;
+  transition: transform 0.2s ease;
+}
+
+.ProjectFolder:hover .ProjectThumbnail {
+  transform: scale(1.02);
+}
+
+.ProjectThumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ProjectInfo h4 {
+  font-size: 13px;
+  color: #333;
+  margin: 0 0 4px 0;
+  font-weight: 500;
+}
+
+.ProjectInfo p {
+  font-size: 11px;
+  color: #888;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .FinderSidebar {
+    display: none;
+  }
+  .FinderWindow {
+    height: 90vh;
+  }
+  .ProjectsContainer {
+    padding: 10px;
+  }
+}

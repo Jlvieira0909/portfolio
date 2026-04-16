@@ -6,15 +6,12 @@ import "./Header.css";
 
 const menus = [
   {
-    label: "João Luiz",
+    label: "João Vieira",
     isBold: true,
     items: [
       {
-        name: "About This Mac",
-        onClick: () =>
-          alert(
-            "João Luiz Vieira\nWeb Developer & Designer\nJoinville, SC - Brazil",
-          ),
+        name: "About This Portfolio",
+        onClick: () => alert("João Vieira\nWeb Developer & Designer"),
       },
       { divider: true },
       {
@@ -174,7 +171,7 @@ export default function Header() {
 
   const handleMenuInteraction = (
     menuLabel: string,
-    type: "click" | "hover",
+    type: "click" | "hover"
   ) => {
     if (type === "click") {
       setActiveMenu(activeMenu === menuLabel ? null : menuLabel);
@@ -211,7 +208,7 @@ export default function Header() {
     const daysInMonth = new Date(
       time.getFullYear(),
       time.getMonth() + 1,
-      0,
+      0
     ).getDate();
     const firstDay = new Date(time.getFullYear(), time.getMonth(), 1).getDay();
     const days = Array.from({ length: daysInMonth }, (_, i) => i + 1);

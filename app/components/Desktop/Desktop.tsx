@@ -38,7 +38,7 @@ export default function Desktop({
           />
         </div>
         <div className="IntroTexts">
-          <h1>João Luiz</h1>
+          <h1>João Vieira</h1>
           <p className="Tagline">Desenvolvedor Front-end & Designer</p>
           <p className="Description">
             Computer Engineering undergraduate and Front-end Developer bridging
@@ -50,32 +50,30 @@ export default function Desktop({
         </div>
       </div>
 
-      <div className="DesktopGrid">
-        <DesktopItem
-          id="projetos"
-          text="Meus Projetos"
-          iconSrc="/icons/Folder.png"
-          onClick={() => toggleApp("projetos-window")}
-        />
-        <DesktopItem
-          id="curriculo"
-          text="Currículo.pdf"
-          iconSrc="/icons/Folder.png"
-          onClick={() => toggleApp("safari")}
-        />
-        <DesktopItem
-          id="sobre"
-          text="Sobre Mim"
-          iconSrc="/icons/Folder.png"
-          onClick={() => toggleApp("terminal")}
-        />
-        <DesktopItem
-          id="design"
-          text="Graphic Design"
-          iconSrc="/icons/Folder.png"
-          onClick={() => toggleApp("terminal")}
-        />
-      </div>
+      <DesktopItem
+        id="projetos"
+        text="Projects"
+        iconSrc="/icons/Folder.png"
+        onClick={() => (window.location.href = "/projects")}
+      />
+      <DesktopItem
+        id="curriculo"
+        text="Resume"
+        iconSrc="/icons/Folder.png"
+        onClick={() => window.open("/curriculo.pdf", "_blank")}
+      />
+      <DesktopItem
+        id="sobre"
+        text="About Me"
+        iconSrc="/icons/Folder.png"
+        onClick={() => toggleApp("terminal")}
+      />
+      <DesktopItem
+        id="design"
+        text="Design"
+        iconSrc="/icons/Folder.png"
+        onClick={() => (window.location.href = "/design")}
+      />
 
       {activeApps.includes("safari") && (
         <MacWindow
