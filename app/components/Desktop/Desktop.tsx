@@ -66,7 +66,7 @@ export default function Desktop({
         id="sobre"
         text="About Me"
         iconSrc="/icons/Folder.png"
-        onClick={() => toggleApp("terminal")}
+        onClick={() => (window.location.href = "/about-me")}
       />
       <DesktopItem
         id="design"

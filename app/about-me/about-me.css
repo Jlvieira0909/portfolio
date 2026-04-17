@@ -1,0 +1,276 @@
+.AboutContainer {
+  width: 100vw;
+  height: calc(100vh - 28px);
+  margin-top: 28px;
+  background-color: #fcfcfc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ChatWrapper {
+  width: 100%;
+  max-width: 540px;
+  height: 65vh;
+  min-height: 450px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: 12px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  z-index: 20;
+  position: relative;
+  overflow: hidden;
+}
+
+.ChatHeader {
+  height: 44px;
+  background: rgba(245, 245, 245, 0.9);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.ChatHeaderButtons {
+  display: flex;
+  gap: 8px;
+  position: absolute;
+  left: 16px;
+}
+
+.ChatHeaderBtn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.ChatHeaderBtn.close {
+  background: #ff605c;
+}
+
+.ChatHeaderBtn.minimize {
+  background: #ffbd44;
+}
+
+.ChatHeaderBtn.maximize {
+  background: #00ca4e;
+}
+
+.ChatTitle {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  gap: 8px;
+}
+
+.Avatar {
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #4285f4, #0b84ff);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.ChatBody {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scrollbar-width: none;
+}
+
+.ChatBody::-webkit-scrollbar {
+  display: none;
+}
+
+.MessageRow {
+  display: flex;
+  width: 100%;
+}
+
+.MessageRow.system {
+  justify-content: flex-start;
+}
+
+.MessageRow.me {
+  justify-content: flex-end;
+}
+
+.MessageBubble {
+  max-width: 75%;
+  padding: 12px 16px;
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.MessageBubble.system {
+  background: #e9e9eb;
+  color: #000;
+  border-bottom-left-radius: 4px;
+}
+
+.MessageBubble.me {
+  background: #0b84ff;
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+.MessageBubble p {
+  margin: 0;
+}
+
+.IntroText {
+  font-size: 18px;
+}
+
+.IntroText em {
+  font-family: serif;
+  font-style: italic;
+  font-size: 22px;
+  margin-right: 6px;
+}
+
+.MessageBubble.image-bubble {
+  padding: 0;
+  background: transparent;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.MessageBubble.image-bubble img {
+  display: block;
+  max-width: 220px;
+  height: auto;
+  border-radius: 12px;
+}
+
+.ChatHint {
+  text-align: center;
+  font-size: 11px;
+  color: #aaa;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.FloatingImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150px;
+  cursor: grab;
+  z-index: 10;
+  touch-action: none;
+  user-select: none;
+  transition: opacity 0.5s ease;
+  will-change: transform;
+}
+
+.FloatingImage.dragging {
+  z-index: 50;
+  cursor: grabbing;
+}
+
+.FloatingImageContent {
+  background: #fff;
+  padding: 8px 8px 32px 8px;
+  border-radius: 6px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  animation: float 4s ease-in-out infinite alternate;
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.FloatingImageContent img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.FloatingLabel {
+  position: absolute;
+  bottom: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #555;
+  font-family: monospace;
+}
+
+.ProgressRing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.6);
+  border-top-color: #0b84ff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.FloatingImage.pressing .ProgressRing {
+  opacity: 1;
+  animation: fillRing 1s linear forwards;
+}
+
+.FloatingImage.pressing .FloatingImageContent {
+  transform: scale(0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fillRing {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-15px);
+  }
+}
+
+@media (max-width: 768px) {
+  .ChatWrapper {
+    height: 70vh;
+    width: 90%;
+  }
+  .FloatingImage {
+    width: 120px;
+  }
+}

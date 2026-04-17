@@ -23,11 +23,17 @@ export default function Dock({
           iconSrc="/icons/Menu.png"
           isActive={true}
         />
-        <DockIcon href="/search" text="Finder" iconSrc="/icons/Finder.png" />
+        <DockIcon
+          href="/search"
+          text="Finder"
+          iconSrc="/icons/Finder.png"
+          onClick={() => window.open("/curriculo.pdf", "_blank")}
+        />
         <DockIcon
           href="/messages"
           text="Messages"
           iconSrc="/icons/Messages.png"
+          onClick={() => (window.location.href = "/about-me")}
         />
         <DockIcon
           href="#"
@@ -63,7 +69,12 @@ export default function Dock({
           isActive={activeApps.includes("projetos-window")}
           onClick={() => (window.location.href = "/projects")}
         />
-        <DockIcon href="/trash" text="Trash" iconSrc="/icons/Trash.png" />
+        <DockIcon
+          href="/trash"
+          text="Trash"
+          iconSrc="/icons/Trash.png"
+          onClick={() => (window.location.href = "/design")}
+        />
       </div>
     </div>
   );
