@@ -20,7 +20,7 @@
 }
 
 .DesktopItem.dragging {
-  z-index: 20;
+  z-index: 50;
   opacity: 0.9;
   filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.2));
 }
@@ -34,6 +34,8 @@
 
 .IconContainer img {
   pointer-events: none;
+  position: relative;
+  z-index: 2;
 }
 
 .DesktopItemText {
@@ -49,23 +51,33 @@
   text-overflow: ellipsis;
 }
 
-.DesktopItem.selected:not(.dragging) {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-.DesktopItem.selected:not(.dragging) .IconContainer::after {
-  content: "";
+.HoverImageWrapper {
   position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  background-color: rgba(10, 132, 255, 0.3);
-  border-radius: 8px;
-  z-index: -1;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  pointer-events: none;
 }
 
-.DesktopItem.selected:not(.dragging) .DesktopItemText {
-  background-color: rgb(10, 132, 255);
-  color: #fff;
+.HoverImageWrapper img {
+  width: 34px;
+  height: 24px;
+  border-radius: 2px;
+  object-fit: cover;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  opacity: 0;
+  animation: popOutSingle 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popOutSingle {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }

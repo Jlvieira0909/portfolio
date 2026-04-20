@@ -9,6 +9,7 @@ interface MacWindowProps {
   children: ReactNode;
   width?: string;
   height?: string;
+  initialPosition?: { x: number; y: number };
 }
 
 export default function MacWindow({
@@ -19,8 +20,9 @@ export default function MacWindow({
   children,
   width = "600px",
   height = "400px",
+  initialPosition = { x: 0, y: 0 },
 }: MacWindowProps) {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState(initialPosition);
   const [isDragging, setIsDragging] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
@@ -69,7 +71,7 @@ export default function MacWindow({
             ? "none"
             : `translate(${position.x}px, ${position.y}px)`,
           width: isMaximized ? "100vw" : width,
-          height: isMaximized ? "100vh" : height,
+          height: isMaximized ? "calc(100vh - 28px)" : height,
         }}
       >
         <div className={`MacWindowContainer ${isDragging ? "dragging" : ""}`}>
@@ -91,12 +93,11 @@ export default function MacWindow({
                   onClose();
                 }}
               >
-                <svg width="8" height="8" viewBox="0 0 8 8">
+                <svg viewBox="0 0 10 10">
                   <path
-                    d="M1.5 1.5L6.5 6.5M6.5 1.5L1.5 6.5"
+                    d="M1 1L9 9M9 1L1 9"
                     stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
+                    strokeWidth="1.2"
                   />
                 </svg>
               </button>
@@ -111,13 +112,8 @@ export default function MacWindow({
                   setIsMinimized(true);
                 }}
               >
-                <svg width="8" height="8" viewBox="0 0 8 8">
-                  <path
-                    d="M1.5 4H6.5"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
+                <svg viewBox="0 0 10 10">
+                  <path d="M1 5H9" stroke="currentColor" strokeWidth="1.2" />
                 </svg>
               </button>
               <button
@@ -129,15 +125,14 @@ export default function MacWindow({
                 onClick={(e) => {
                   e.stopPropagation();
                   setIsMaximized(!isMaximized);
-                  setPosition({ x: 0, y: 0 });
                 }}
               >
-                <svg width="8" height="8" viewBox="0 0 8 8">
+                <svg viewBox="0 0 10 10">
                   <path
-                    d="M1.5 4.5V1.5H4.5M6.5 3.5V6.5H3.5"
+                    d="M1 1H9V9H1V1Z"
+                    fill="none"
                     stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
+                    strokeWidth="1.2"
                   />
                 </svg>
               </button>

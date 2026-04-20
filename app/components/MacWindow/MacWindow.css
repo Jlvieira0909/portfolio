@@ -94,6 +94,8 @@
 .MacWindowBtn svg {
   opacity: 0;
   transition: opacity 0.1s;
+  width: 6px;
+  height: 6px;
 }
 
 .MacWindowButtons:hover .MacWindowBtn svg {
@@ -120,16 +122,16 @@
 
 .MacWindowDragWrapper.maximized {
   position: fixed;
-  top: 0 !important;
+  top: 28px !important;
   left: 0 !important;
   width: 100vw !important;
-  height: 100vh !important;
+  height: calc(100vh - 28px) !important;
   z-index: 2000;
 }
 
 .MacWindowDragWrapper.maximized .MacWindowContainer {
   border-radius: 0;
-  max-height: 100vh;
+  max-height: calc(100vh - 28px);
 }
 
 .MacWindowOverlay.minimized {

@@ -38,7 +38,7 @@ export default function Desktop({
           />
         </div>
         <div className="IntroTexts">
-          <h1>João Vieira</h1>
+          <h1>João Luiz</h1>
           <p className="Tagline">Desenvolvedor Front-end & Designer</p>
           <p className="Description">
             Computer Engineering undergraduate and Front-end Developer bridging
@@ -54,24 +54,28 @@ export default function Desktop({
         id="projetos"
         text="Projects"
         iconSrc="/icons/Folder.png"
+        hoverImage="https://picsum.photos/seed/p1/100/100"
         onClick={() => (window.location.href = "/projects")}
       />
       <DesktopItem
         id="curriculo"
         text="Resume"
         iconSrc="/icons/Folder.png"
+        hoverImage="https://picsum.photos/seed/c1/100/100"
         onClick={() => window.open("/curriculo.pdf", "_blank")}
       />
       <DesktopItem
         id="sobre"
         text="About Me"
         iconSrc="/icons/Folder.png"
+        hoverImage="https://picsum.photos/seed/a1/100/100"
         onClick={() => (window.location.href = "/about-me")}
       />
       <DesktopItem
         id="design"
         text="Design"
         iconSrc="/icons/Folder.png"
+        hoverImage="https://picsum.photos/seed/d1/100/100"
         onClick={() => (window.location.href = "/design")}
       />
 
@@ -81,6 +85,7 @@ export default function Desktop({
           onClose={() => closeApp("safari")}
           onFocus={() => setFocusedApp("safari")}
           zIndex={getZIndex("safari")}
+          initialPosition={{ x: -150, y: -80 }}
         >
           <SafariApp />
         </MacWindow>
@@ -92,22 +97,9 @@ export default function Desktop({
           onClose={() => closeApp("terminal")}
           onFocus={() => setFocusedApp("terminal")}
           zIndex={getZIndex("terminal")}
+          initialPosition={{ x: 80, y: 50 }}
         >
           <TerminalApp />
-        </MacWindow>
-      )}
-
-      {activeApps.includes("projetos-window") && (
-        <MacWindow
-          title="Meus Projetos"
-          onClose={() => closeApp("projetos-window")}
-          onFocus={() => setFocusedApp("projetos-window")}
-          zIndex={getZIndex("projetos-window")}
-        >
-          <div style={{ padding: "20px" }}>
-            <h2>Meus Projetos Incríveis</h2>
-            <p>Lista de projetos aqui...</p>
-          </div>
         </MacWindow>
       )}
 
@@ -119,6 +111,7 @@ export default function Desktop({
           zIndex={getZIndex("spotify")}
           width="400px"
           height="500px"
+          initialPosition={{ x: 220, y: -20 }}
         >
           <iframe
             src="https://open.spotify.com/embed/playlist/"

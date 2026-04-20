@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import DockIcon from "../DockIcon/DockIcon";
 import "./Dock.css";
 
@@ -14,6 +15,8 @@ export default function Dock({
   setFocusedApp,
   toggleApp,
 }: DockProps) {
+  const pathname = usePathname();
+
   return (
     <div className="DockContainer">
       <div className="DockNavigation">
@@ -21,20 +24,21 @@ export default function Dock({
           href="/"
           text="Home"
           iconSrc="/icons/Menu.png"
-          isActive={true}
+          isActive={pathname === "/"}
         />
         <DockIcon
-          href="/search"
-          text="Finder"
+          href="/design"
+          text="Design"
           iconSrc="/icons/Finder.png"
-          onClick={() => window.open("/curriculo.pdf", "_blank")}
+          isActive={pathname === "/design"}
         />
         <DockIcon
-          href="/messages"
-          text="Messages"
+          href="/about-me"
+          text="About Me"
           iconSrc="/icons/Messages.png"
-          onClick={() => (window.location.href = "/about-me")}
+          isActive={pathname === "/about-me"}
         />
+
         <DockIcon
           href="#"
           text="Safari"
@@ -66,14 +70,13 @@ export default function Dock({
           href="/projects"
           text="Projects"
           iconSrc="/icons/Folder.png"
-          isActive={activeApps.includes("projetos-window")}
-          onClick={() => (window.location.href = "/projects")}
+          isActive={pathname.startsWith("/projects")}
         />
         <DockIcon
-          href="/trash"
+          href="#"
           text="Trash"
           iconSrc="/icons/Trash.png"
-          onClick={() => (window.location.href = "/design")}
+          isActive={false}
         />
       </div>
     </div>
