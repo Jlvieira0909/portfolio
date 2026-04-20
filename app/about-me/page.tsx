@@ -332,9 +332,11 @@ function FloatingImage({
       }}
     >
       <div className="FloatingImageContent">
-        <img src={data.src} alt={data.label} draggable={false} />
+        <div className="ImageWrapper">
+          <img src={data.src} alt={data.label} draggable={false} />
+          <div className="BlueLoaderOverlay" />
+        </div>
         <span className="FloatingLabel">{data.label}</span>
-        <div className="ProgressRing" />
       </div>
     </div>
   );
