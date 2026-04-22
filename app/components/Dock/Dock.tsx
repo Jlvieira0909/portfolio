@@ -38,7 +38,6 @@ export default function Dock({
           iconSrc="/icons/Messages.png"
           isActive={pathname === "/about-me"}
         />
-
         <DockIcon
           href="/projects"
           text="Projects"
@@ -46,39 +45,40 @@ export default function Dock({
           isActive={pathname.startsWith("/projects")}
         />
 
-        <div className="DockDivider" />
+        <div className="DesktopOnlyApps">
+          <div className="DockDivider" />
 
-        <DockIcon
-          href="#"
-          text="Terminal"
-          iconSrc="/icons/Terminal.png"
-          isActive={activeApps.includes("terminal")}
-          onClick={() => toggleApp("terminal")}
-        />
-        <DockIcon
-          href="#"
-          text="Spotify"
-          iconSrc="/icons/Spotify.png"
-          isActive={activeApps.includes("spotify")}
-          onClick={() => toggleApp("spotify")}
-        />
+          <DockIcon
+            href="#"
+            text="Safari"
+            iconSrc="/icons/Safari.png"
+            isActive={activeApps.includes("safari")}
+            onClick={() => toggleApp("safari")}
+          />
+          <DockIcon
+            href="#"
+            text="Terminal"
+            iconSrc="/icons/Terminal.png"
+            isActive={activeApps.includes("terminal")}
+            onClick={() => toggleApp("terminal")}
+          />
+          <DockIcon
+            href="#"
+            text="Spotify"
+            iconSrc="/icons/Spotify.png"
+            isActive={activeApps.includes("spotify")}
+            onClick={() => toggleApp("spotify")}
+          />
 
-        <DockIcon
-          href="#"
-          text="Safari"
-          iconSrc="/icons/Safari.png"
-          isActive={activeApps.includes("safari")}
-          onClick={() => toggleApp("safari")}
-        />
+          <div className="DockDivider" />
 
-        <div className="DockDivider" />
-
-        <DockIcon
-          href="#"
-          text="Trash"
-          iconSrc="/icons/Trash.png"
-          isActive={false}
-        />
+          <DockIcon
+            href="#"
+            text="Trash"
+            iconSrc="/icons/Trash.png"
+            isActive={false}
+          />
+        </div>
       </div>
     </div>
   );

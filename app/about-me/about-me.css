@@ -1,6 +1,15 @@
-.AboutContainer {
+.MainPage {
   width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  position: relative;
+}
+
+.AboutContainer {
+  width: 100%;
   height: calc(100vh - 28px);
+  height: calc(100dvh - 28px);
   margin-top: 28px;
   background-color: #fcfcfc;
   display: flex;
@@ -8,6 +17,7 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .ChatWrapper {
@@ -50,6 +60,7 @@
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .ChatHeaderBtn.close {
@@ -173,6 +184,61 @@
   padding-top: 20px;
 }
 
+.desktop-hint {
+  display: block;
+}
+
+.mobile-hint {
+  display: none;
+  margin-top: 8px;
+  padding-top: 0;
+}
+
+.MobileImageSlider {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 10px;
+  width: 100%;
+}
+
+.MobileImageTrack {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px 4px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.MobileImageTrack::-webkit-scrollbar {
+  display: none;
+}
+
+.MobileImageItem {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.1s ease;
+  border: 2px solid #fff;
+}
+
+.MobileImageItem:active {
+  transform: scale(0.95);
+}
+
+.MobileImageItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .FloatingImage {
   position: absolute;
   top: 0;
@@ -266,11 +332,29 @@
 }
 
 @media (max-width: 768px) {
+  .AboutContainer {
+    padding: 20px 20px 110px 20px;
+  }
   .ChatWrapper {
-    height: 70vh;
-    width: 90%;
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 20px;
+    min-height: auto;
+  }
+  .ChatBody {
+    padding: 16px;
   }
   .FloatingImage {
-    width: 120px;
+    display: none !important;
+  }
+  .desktop-hint {
+    display: none;
+  }
+  .MobileImageSlider {
+    display: flex;
+  }
+  .mobile-hint {
+    display: block;
   }
 }

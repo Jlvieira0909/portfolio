@@ -24,12 +24,24 @@ export default function DesktopItem({
   const [isDragging, setIsDragging] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const itemRef = useRef<HTMLDivElement>(null);
   const position = useRef({ x: 0, y: 0 });
   const dragStart = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
+    const mobileCheck = window.innerWidth <= 768;
+    setIsMobile(mobileCheck);
+
+    if (mobileCheck) {
+      setIsVisible(true);
+      if (itemRef.current) {
+        itemRef.current.style.transform = "none";
+      }
+      return;
+    }
+
     const maxX = window.innerWidth - 100;
     const maxY = window.innerHeight - 100;
 
@@ -100,7 +112,7 @@ export default function DesktopItem({
   }, [id]);
 
   const handlePointerEnter = () => {
-    if (!isDragging) setIsHovered(true);
+    if (!isDragging && !isMobile) setIsHovered(true);
   };
 
   const handlePointerLeave = () => {
@@ -152,10 +164,11 @@ export default function DesktopItem({
       onPointerEnter={handlePointerEnter}
       onPointerLeave={handlePointerLeave}
       onDoubleClick={handleDoubleClick}
+      onClick={isMobile ? onClick : undefined}
       style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
+        position: isMobile ? "relative" : "absolute",
+        top: isMobile ? "auto" : 0,
+        left: isMobile ? "auto" : 0,
         opacity: isVisible ? 1 : 0,
         transition: isDragging ? "none" : "opacity 0.4s ease",
       }}
@@ -168,7 +181,7 @@ export default function DesktopItem({
           height={50}
           draggable={false}
         />
-        {hoverImage && isHovered && !isDragging && (
+        {hoverImage && isHovered && !isDragging && !isMobile && (
           <div className="HoverImageWrapper">
             <img src={hoverImage} alt="preview" />
           </div>

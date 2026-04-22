@@ -57,6 +57,8 @@ interface Message {
   content: string;
 }
 
+let registeredImagePositions: { id: string; x: number; y: number }[] = [];
+
 export default function AboutMePage() {
   const [activeApps, setActiveApps] = useState<string[]>([]);
   const [focusedApp, setFocusedApp] = useState<string | null>(null);
@@ -166,10 +168,28 @@ export default function AboutMePage() {
             ))}
 
             {availableImages.length > 0 && (
-              <div className="ChatHint">
-                psst! you can drag any floating photo anywhere on this page, or
-                double-click one to send it 📎
-              </div>
+              <>
+                <div className="ChatHint desktop-hint">
+                  psst! you can drag any floating photo anywhere on this page,
+                  or double-click one to send it 📎
+                </div>
+                <div className="MobileImageSlider">
+                  <div className="MobileImageTrack">
+                    {availableImages.map((img) => (
+                      <div
+                        key={img.id}
+                        className="MobileImageItem"
+                        onClick={() => handleSendImage(img)}
+                      >
+                        <img src={img.src} alt={img.label} />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="ChatHint mobile-hint">
+                    tap to send a photo
+                  </div>
+                </div>
+              </>
             )}
             <div ref={messagesEndRef} />
           </div>
@@ -212,27 +232,52 @@ function FloatingImage({
   const isMoved = useRef(false);
 
   useEffect(() => {
-    const maxX = window.innerWidth - 200;
-    const maxY = window.innerHeight - 200;
-
-    let randomX = Math.floor(Math.random() * maxX);
-    let randomY = Math.floor(Math.random() * maxY);
-
+    const maxX = window.innerWidth - 180;
+    const maxY = window.innerHeight - 180;
     const centerX = window.innerWidth / 2;
     const centerY = window.innerHeight / 2;
 
-    if (
-      Math.abs(randomX - centerX) < 300 &&
-      Math.abs(randomY - centerY) < 300
-    ) {
-      randomX = randomX > centerX ? randomX + 250 : randomX - 250;
-      randomY = randomY > centerY ? randomY + 250 : randomY - 250;
+    const isOverlapping = (x: number, y: number) => {
+      if (
+        Math.abs(x - centerX + 75) < 320 &&
+        Math.abs(y - centerY + 50) < 300
+      ) {
+        return true;
+      }
+      for (const pos of registeredImagePositions) {
+        if (pos.id !== data.id) {
+          if (Math.abs(x - pos.x) < 80 && Math.abs(y - pos.y) < 80) {
+            return true;
+          }
+        }
+      }
+      return false;
+    };
+
+    let randomX = 0;
+    let randomY = 0;
+    let attempts = 0;
+    const maxAttempts = 200;
+
+    do {
+      randomX = Math.floor(Math.random() * maxX);
+      randomY = Math.floor(Math.random() * maxY);
+      randomX = Math.max(20, Math.min(randomX, maxX));
+      randomY = Math.max(50, Math.min(randomY, maxY));
+      attempts++;
+    } while (isOverlapping(randomX, randomY) && attempts < maxAttempts);
+
+    if (attempts >= maxAttempts) {
+      randomX += Math.random() * 100 - 50;
+      randomY += Math.random() * 100 - 50;
     }
 
-    randomX = Math.max(20, Math.min(randomX, maxX));
-    randomY = Math.max(50, Math.min(randomY, maxY));
-
     setPosition({ x: randomX, y: randomY });
+
+    registeredImagePositions = registeredImagePositions.filter(
+      (p) => p.id !== data.id
+    );
+    registeredImagePositions.push({ id: data.id, x: randomX, y: randomY });
 
     if (itemRef.current) {
       itemRef.current.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${
@@ -241,7 +286,13 @@ function FloatingImage({
     }
 
     setTimeout(() => setIsVisible(true), Math.random() * 500);
-  }, []);
+
+    return () => {
+      registeredImagePositions = registeredImagePositions.filter(
+        (p) => p.id !== data.id
+      );
+    };
+  }, [data.id]);
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     e.stopPropagation();

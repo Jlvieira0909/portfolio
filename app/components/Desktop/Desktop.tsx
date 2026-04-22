@@ -50,34 +50,36 @@ export default function Desktop({
         </div>
       </div>
 
-      <DesktopItem
-        id="projetos"
-        text="Projects"
-        iconSrc="/icons/Folder.png"
-        hoverImage="https://picsum.photos/seed/p1/100/100"
-        onClick={() => (window.location.href = "/projects")}
-      />
-      <DesktopItem
-        id="curriculo"
-        text="Resume"
-        iconSrc="/icons/Folder.png"
-        hoverImage="https://picsum.photos/seed/c1/100/100"
-        onClick={() => window.open("/curriculo.pdf", "_blank")}
-      />
-      <DesktopItem
-        id="sobre"
-        text="About Me"
-        iconSrc="/icons/Folder.png"
-        hoverImage="https://picsum.photos/seed/a1/100/100"
-        onClick={() => (window.location.href = "/about-me")}
-      />
-      <DesktopItem
-        id="design"
-        text="Design"
-        iconSrc="/icons/Folder.png"
-        hoverImage="https://picsum.photos/seed/d1/100/100"
-        onClick={() => (window.location.href = "/design")}
-      />
+      <div className="DesktopIconsGrid">
+        <DesktopItem
+          id="projetos"
+          text="Projects"
+          iconSrc="/icons/Folder.png"
+          hoverImage="https://picsum.photos/seed/p1/100/100"
+          onClick={() => (window.location.href = "/projects")}
+        />
+        <DesktopItem
+          id="curriculo"
+          text="Resume"
+          iconSrc="/icons/Folder.png"
+          hoverImage="https://picsum.photos/seed/c1/100/100"
+          onClick={() => window.open("/curriculo.pdf", "_blank")}
+        />
+        <DesktopItem
+          id="sobre"
+          text="About Me"
+          iconSrc="/icons/Folder.png"
+          hoverImage="https://picsum.photos/seed/a1/100/100"
+          onClick={() => (window.location.href = "/about-me")}
+        />
+        <DesktopItem
+          id="design"
+          text="Design"
+          iconSrc="/icons/Folder.png"
+          hoverImage="https://picsum.photos/seed/d1/100/100"
+          onClick={() => (window.location.href = "/design")}
+        />
+      </div>
 
       {activeApps.includes("safari") && (
         <MacWindow

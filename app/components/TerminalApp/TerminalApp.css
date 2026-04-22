@@ -1,24 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap");
+
 .TerminalContainer {
-  background-color: #1e1e1e;
-  height: 100%;
-  padding: 12px;
-  font-family: "Menlo", "Monaco", "Courier New", monospace;
-  color: #fff;
+  background-color: #1a1b26;
+  color: #a9b1d6;
+  font-family: "JetBrains Mono", "Courier New", Courier, monospace;
   font-size: 13px;
-  overflow-y: auto;
+  min-height: 100%;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .TerminalLine {
-  margin: 0;
-  line-height: 1.5;
-  white-space: pre-wrap;
+  margin-bottom: 6px;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+}
+
+.TerminalPrompt {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.PromptUser {
+  color: #9ece6a;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.PromptPath {
+  color: #7aa2f7;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.PromptChar {
+  color: #a9b1d6;
+  font-weight: 700;
+}
+
+.TerminalCommand {
+  color: #c0caf5;
 }
 
 .TerminalCursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background-color: #c0caf5;
+  margin-left: 4px;
   animation: blink 1s step-end infinite;
 }
 
+.TerminalOutput {
+  margin-bottom: 16px;
+}
+
+.TerminalAscii {
+  color: #bb9af7;
+  white-space: pre;
+  font-size: 12px;
+  line-height: 1.1;
+  margin: 12px 0;
+  font-family: inherit;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.TerminalAscii::-webkit-scrollbar {
+  display: none;
+}
+
+.TerminalText {
+  color: #a9b1d6;
+  margin-top: 12px;
+  line-height: 1.6;
+}
+
+.ColorGreen {
+  color: #9ece6a;
+}
+.ColorBlue {
+  color: #7aa2f7;
+}
+.ColorYellow {
+  color: #e0af68;
+}
+.ColorMagenta {
+  color: #bb9af7;
+}
+.ColorCyan {
+  color: #7dcfff;
+}
+.ColorRed {
+  color: #f7768e;
+}
+
 @keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
   50% {
     opacity: 0;
   }

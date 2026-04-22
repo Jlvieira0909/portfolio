@@ -67,32 +67,54 @@
   color: #555;
 }
 
-.DesktopGrid {
+.DesktopIconsGrid {
+  width: 100%;
+  height: 100%;
   position: absolute;
-  top: 40px;
-  right: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  z-index: 30;
-  align-items: flex-end;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.DesktopIconsGrid > * {
+  pointer-events: auto;
 }
 
 @media (max-width: 768px) {
+  .Desktop {
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 20px 120px 20px;
+    height: auto;
+    min-height: calc(100vh - 28px);
+  }
+
   .DesktopIntro {
     flex-direction: column;
     text-align: center;
     gap: 20px;
+    margin-top: 40px;
   }
 
   .IntroTexts h1 {
     font-size: 32px;
   }
 
-  .DesktopGrid {
-    top: auto;
-    bottom: 120px;
-    right: 20px;
-    gap: 15px;
+  .ProfilePhotoContainer {
+    width: 140px;
+    height: 140px;
+  }
+
+  .DesktopIconsGrid {
+    position: relative;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 20px;
+    justify-items: center;
+    max-width: 260px;
+    margin: 40px auto 0 auto;
+    pointer-events: auto;
   }
 }
