@@ -84,6 +84,7 @@ export default function Desktop({
           title="Safari"
           onClose={() => closeApp("safari")}
           onFocus={() => setFocusedApp("safari")}
+          onMinimize={() => setFocusedApp(null)}
           zIndex={getZIndex("safari")}
           initialPosition={{ x: -150, y: -80 }}
         >
@@ -96,6 +97,7 @@ export default function Desktop({
           title="joao — -zsh — 80x24"
           onClose={() => closeApp("terminal")}
           onFocus={() => setFocusedApp("terminal")}
+          onMinimize={() => setFocusedApp(null)}
           zIndex={getZIndex("terminal")}
           initialPosition={{ x: 80, y: 50 }}
         >
@@ -108,6 +110,7 @@ export default function Desktop({
           title="Spotify"
           onClose={() => closeApp("spotify")}
           onFocus={() => setFocusedApp("spotify")}
+          onMinimize={() => setFocusedApp(null)}
           zIndex={getZIndex("spotify")}
           width="400px"
           height="500px"

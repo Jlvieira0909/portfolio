@@ -111,6 +111,7 @@ export default function DesignPage() {
             setSelectedImage(null);
           }}
           onFocus={() => setFocusedApp("preview")}
+          onMinimize={() => setFocusedApp(null)}
           zIndex={focusedApp === "preview" ? 100 : 40}
           width="700px"
           height="650px"

@@ -131,7 +131,10 @@ export default function AboutMePage() {
         <div className="ChatWrapper" id="chat-dropzone">
           <div className="ChatHeader">
             <div className="ChatHeaderButtons">
-              <div className="ChatHeaderBtn close" />
+              <div
+                className="ChatHeaderBtn close"
+                onClick={() => (window.location.href = "/")}
+              />
               <div className="ChatHeaderBtn minimize" />
               <div className="ChatHeaderBtn maximize" />
             </div>

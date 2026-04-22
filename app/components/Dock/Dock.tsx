@@ -40,11 +40,10 @@ export default function Dock({
         />
 
         <DockIcon
-          href="#"
-          text="Safari"
-          iconSrc="/icons/Safari.png"
-          isActive={activeApps.includes("safari")}
-          onClick={() => toggleApp("safari")}
+          href="/projects"
+          text="Projects"
+          iconSrc="/icons/Folder.png"
+          isActive={pathname.startsWith("/projects")}
         />
 
         <div className="DockDivider" />
@@ -64,14 +63,16 @@ export default function Dock({
           onClick={() => toggleApp("spotify")}
         />
 
+        <DockIcon
+          href="#"
+          text="Safari"
+          iconSrc="/icons/Safari.png"
+          isActive={activeApps.includes("safari")}
+          onClick={() => toggleApp("safari")}
+        />
+
         <div className="DockDivider" />
 
-        <DockIcon
-          href="/projects"
-          text="Projects"
-          iconSrc="/icons/Folder.png"
-          isActive={pathname.startsWith("/projects")}
-        />
         <DockIcon
           href="#"
           text="Trash"

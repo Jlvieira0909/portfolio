@@ -5,6 +5,7 @@ interface MacWindowProps {
   title: string;
   onClose: () => void;
   onFocus: () => void;
+  onMinimize?: () => void;
   zIndex: number;
   children: ReactNode;
   width?: string;
@@ -16,6 +17,7 @@ export default function MacWindow({
   title,
   onClose,
   onFocus,
+  onMinimize,
   zIndex,
   children,
   width = "600px",
@@ -110,6 +112,7 @@ export default function MacWindow({
                 onClick={(e) => {
                   e.stopPropagation();
                   setIsMinimized(true);
+                  if (onMinimize) onMinimize();
                 }}
               >
                 <svg viewBox="0 0 10 10">
