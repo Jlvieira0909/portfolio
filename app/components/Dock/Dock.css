@@ -49,45 +49,41 @@
 
   .DockContainer {
     position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    width: max-content;
-    max-width: 90%;
     bottom: 20px;
-    padding: 14px 24px;
-    border-radius: 28px;
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    z-index: 100;
+    pointer-events: none;
+    padding: 0;
   }
 
   .DockNavigation {
+    pointer-events: auto;
     display: flex;
-    gap: 22px;
-    overflow-x: visible;
-    justify-content: center;
+    gap: 12px;
     align-items: center;
-    padding-bottom: 0;
-    margin: 0;
+    justify-content: center;
+    height: auto;
+    padding: 10px 20px 16px 20px;
+    border-radius: 32px;
   }
 
   .DockNavigation > * {
     flex-shrink: 0;
+    position: relative;
   }
 
   .DockIconContainer {
-    width: 50px;
-    height: 50px;
+    width: 38px;
+    height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .DockIconContainer img {
-    width: 50px;
-    height: 50px;
+    width: 38px;
+    height: 38px;
     object-fit: contain;
   }
 

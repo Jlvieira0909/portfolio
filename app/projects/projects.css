@@ -230,13 +230,47 @@
 }
 
 @media (max-width: 768px) {
+  .ProjectsContainer {
+    padding: 16px 16px 110px 16px;
+    align-items: stretch;
+  }
+
+  .FinderWindow {
+    height: 100%;
+  }
+
   .FinderSidebar {
     display: none;
   }
-  .FinderWindow {
-    height: 90vh;
+
+  .FinderTopbar {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 12px 16px;
+    gap: 12px;
   }
-  .ProjectsContainer {
-    padding: 10px;
+
+  .ViewControls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .SearchBar {
+    flex: 1;
+    margin-left: 10px;
+  }
+
+  .SearchBar input {
+    width: 100%;
+  }
+
+  .FinderGrid {
+    padding: 20px 16px;
+    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+
+  .ProjectThumbnail {
+    margin-bottom: 8px;
   }
 }
