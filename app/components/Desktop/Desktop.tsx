@@ -30,7 +30,7 @@ export default function Desktop({
       <div className="DesktopIntro">
         <div className="ProfilePhotoContainer">
           <Image
-            src="/sua-foto.jpg"
+            src="/images/portfolio001.png"
             alt="Sua Foto de Perfil"
             width={180}
             height={180}

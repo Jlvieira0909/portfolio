@@ -7,14 +7,22 @@ import MacWindow from "../components/MacWindow/MacWindow";
 import "./design.css";
 
 const galleryPlaceholders = [
-  "https://picsum.photos/seed/design1/600/600",
-  "https://picsum.photos/seed/design2/600/600",
-  "https://picsum.photos/seed/design3/600/600",
-  "https://picsum.photos/seed/design4/600/600",
-  "https://picsum.photos/seed/design5/600/600",
-  "https://picsum.photos/seed/design6/600/600",
-  "https://picsum.photos/seed/design7/600/600",
-  "https://picsum.photos/seed/design8/600/600",
+  "/design/Design01.jpg",
+  "/design/Design02.jpg",
+  "/design/Design03.jpg",
+  "/design/Design04.jpg",
+  "/design/Design05.jpg",
+  "/design/Design06.jpg",
+  "/design/Design07.jpg",
+  "/design/Design08.jpg",
+  "/design/Design09.jpg",
+  "/design/Design10.jpg",
+  "/design/Design11.jpg",
+  "/design/Design12.jpg",
+  "/design/Design13.jpg",
+  "/design/Design14.jpg",
+  "/design/Design15.jpg",
+  "/design/Design16.jpg",
 ];
 
 export default function DesignPage() {
@@ -76,7 +84,7 @@ export default function DesignPage() {
           <a href="/" className="BackButton">
             {"< back"}
           </a>
-          <h2 className="DesignTitle">graphic design &gt; 2023-2025</h2>
+          <h2 className="DesignTitle">graphic design &gt; 2020-2026</h2>
         </div>
 
         {isIntroPlaying ? (
