@@ -1,11 +1,10 @@
 "use client";
 
-import { useState, ReactNode } from "react";
+import { useState } from "react";
 import DesktopItem from "../DesktopItem/DesktopItem";
 import MacWindow from "../MacWindow/MacWindow";
 import TerminalApp from "../TerminalApp/TerminalApp";
 import SafariApp from "../SafariApp/SafariApp";
-import Image from "next/image";
 import "./Desktop.css";
 
 interface DesktopProps {
@@ -28,24 +27,23 @@ export default function Desktop({
   return (
     <main className="Desktop">
       <div className="DesktopIntro">
-        <div className="ProfilePhotoContainer">
-          <Image
+        <div className="IntroImageContainer">
+          <span className="IntroTextOverlay top">Hello,</span>
+          <span className="IntroTextOverlay bottom">i'm joão!</span>
+          <img
             src="/images/portfolio001.png"
-            alt="Sua Foto de Perfil"
-            width={180}
-            height={180}
-            className="ProfilePhoto"
+            alt="João Luiz"
+            className="IntroPhoto"
           />
         </div>
+
         <div className="IntroTexts">
-          <h1>João Luiz</h1>
-          <p className="Tagline">Desenvolvedor Front-end & Designer</p>
-          <p className="Description">
-            Computer Engineering undergraduate and Front-end Developer bridging
-            the gap between robust software architecture and elegant UI/UX
-            design. Experienced in crafting seamless web applications, intuitive
-            interfaces, and scalable integrations. Passionate about merging
-            logical problem-solving with creative visual design.
+          <p>
+            Take a look at my projects
+            <br />
+            As a front-end developer & web designer
+            <br />
+            And Computer Engineering Undergraduate
           </p>
         </div>
       </div>

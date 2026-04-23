@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Image from "next/image";
 import "./DesktopItem.css";
 
 let registeredPositions: { id: string; x: number; y: number }[] = [];
@@ -21,112 +20,118 @@ export default function DesktopItem({
   hoverImage,
   onClick,
 }: DesktopItemProps) {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
 
   const itemRef = useRef<HTMLDivElement>(null);
-  const position = useRef({ x: 0, y: 0 });
   const dragStart = useRef({ x: 0, y: 0 });
+  const clickStartPos = useRef({ x: 0, y: 0 });
+  const isMoved = useRef(false);
 
   useEffect(() => {
-    const mobileCheck = window.innerWidth <= 768;
-    setIsMobile(mobileCheck);
+    const calculatePosition = () => {
+      const maxX = window.innerWidth - 100;
+      const maxY = window.innerHeight - 160;
+      const introEl = document.querySelector(".DesktopIntro");
+      let exclRect = { left: 0, right: 0, top: 0, bottom: 0 };
 
-    if (mobileCheck) {
-      setIsVisible(true);
-      if (itemRef.current) {
-        itemRef.current.style.transform = "none";
+      if (introEl) {
+        const rect = introEl.getBoundingClientRect();
+        exclRect = {
+          left: rect.left - 80,
+          right: rect.right + 60,
+          top: rect.top - 60,
+          bottom: rect.bottom + 60,
+        };
+      } else {
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        exclRect = {
+          left: centerX - 450,
+          right: centerX + 450,
+          top: centerY - 300,
+          bottom: centerY + 300,
+        };
       }
-      return;
-    }
 
-    const maxX = window.innerWidth - 100;
-    const maxY = window.innerHeight - 100;
+      const isOverlapping = (x: number, y: number) => {
+        const iconRight = x + 90;
+        const iconBottom = y + 100;
 
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
+        if (
+          iconRight > exclRect.left &&
+          x < exclRect.right &&
+          iconBottom > exclRect.top &&
+          y < exclRect.bottom
+        ) {
+          return true;
+        }
 
-    const iconWidth = 90;
-    const iconHeight = 100;
-
-    const isOverlapping = (x: number, y: number) => {
-      const centerBox = {
-        left: centerX - 450,
-        right: centerX + 450,
-        top: centerY - 200,
-        bottom: centerY + 200,
-      };
-
-      const inCenter =
-        x + iconWidth > centerBox.left &&
-        x < centerBox.right &&
-        y + iconHeight > centerBox.top &&
-        y < centerBox.bottom;
-
-      const inDock = y + iconHeight > window.innerHeight - 120;
-
-      const inHeader = y < 50;
-
-      if (inCenter || inDock || inHeader) return true;
-
-      for (const pos of registeredPositions) {
-        if (pos.id !== id) {
-          const dx = Math.abs(x - pos.x);
-          const dy = Math.abs(y - pos.y);
-          if (dx < iconWidth + 30 && dy < iconHeight + 30) {
-            return true;
+        for (const pos of registeredPositions) {
+          if (pos.id !== id) {
+            if (Math.abs(x - pos.x) < 110 && Math.abs(y - pos.y) < 110) {
+              return true;
+            }
           }
         }
+        return false;
+      };
+
+      let randomX = 0;
+      let randomY = 0;
+      let attempts = 0;
+      const maxAttempts = 2000;
+
+      do {
+        randomX = Math.floor(Math.random() * maxX);
+        randomY = Math.floor(Math.random() * maxY);
+
+        randomX = Math.max(20, randomX);
+        randomY = Math.max(60, randomY);
+
+        attempts++;
+      } while (isOverlapping(randomX, randomY) && attempts < maxAttempts);
+
+      if (attempts >= maxAttempts) {
+        const corners = [
+          { x: 20, y: 60 },
+          { x: window.innerWidth - 110, y: 60 },
+          { x: 20, y: window.innerHeight - 180 },
+          { x: window.innerWidth - 110, y: window.innerHeight - 180 },
+        ];
+        const fallback = corners[registeredPositions.length % 4];
+        randomX = fallback.x;
+        randomY = fallback.y;
       }
 
-      return false;
+      setPosition({ x: randomX, y: randomY });
+
+      registeredPositions = registeredPositions.filter((p) => p.id !== id);
+      registeredPositions.push({ id, x: randomX, y: randomY });
+
+      if (itemRef.current) {
+        itemRef.current.style.transform = `translate(${randomX}px, ${randomY}px)`;
+      }
     };
 
-    let randomX = 0;
-    let randomY = 0;
-    let attempts = 0;
-    const maxAttempts = 150;
-
-    do {
-      randomX = Math.floor(Math.random() * (maxX - 20) + 20);
-      randomY = Math.floor(Math.random() * (maxY - 20) + 20);
-      attempts++;
-    } while (isOverlapping(randomX, randomY) && attempts < maxAttempts);
-
-    position.current = { x: randomX, y: randomY };
-
-    registeredPositions = registeredPositions.filter((p) => p.id !== id);
-    registeredPositions.push({ id, x: randomX, y: randomY });
-
-    if (itemRef.current) {
-      itemRef.current.style.transform = `translate(${randomX}px, ${randomY}px)`;
-    }
-
-    setIsVisible(true);
+    const timeout = setTimeout(calculatePosition, 100);
 
     return () => {
+      clearTimeout(timeout);
       registeredPositions = registeredPositions.filter((p) => p.id !== id);
     };
   }, [id]);
 
-  const handlePointerEnter = () => {
-    if (!isDragging && !isMobile) setIsHovered(true);
-  };
-
-  const handlePointerLeave = () => {
-    setIsHovered(false);
-  };
-
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     e.stopPropagation();
     setIsDragging(true);
-    setIsHovered(false);
+    isMoved.current = false;
 
+    clickStartPos.current = { x: e.clientX, y: e.clientY };
     dragStart.current = {
-      x: e.clientX - position.current.x,
-      y: e.clientY - position.current.y,
+      x: e.clientX - position.x,
+      y: e.clientY - position.y,
     };
     e.currentTarget.setPointerCapture(e.pointerId);
   };
@@ -134,24 +139,30 @@ export default function DesktopItem({
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!isDragging) return;
 
-    position.current = {
-      x: e.clientX - dragStart.current.x,
-      y: e.clientY - dragStart.current.y,
-    };
+    const deltaX = Math.abs(e.clientX - clickStartPos.current.x);
+    const deltaY = Math.abs(e.clientY - clickStartPos.current.y);
+
+    if (deltaX > 5 || deltaY > 5) {
+      isMoved.current = true;
+    }
+
+    const newX = e.clientX - dragStart.current.x;
+    const newY = e.clientY - dragStart.current.y;
+
+    setPosition({ x: newX, y: newY });
 
     if (itemRef.current) {
-      itemRef.current.style.transform = `translate(${position.current.x}px, ${position.current.y}px)`;
+      itemRef.current.style.transform = `translate(${newX}px, ${newY}px)`;
     }
   };
 
   const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
     setIsDragging(false);
     e.currentTarget.releasePointerCapture(e.pointerId);
-  };
 
-  const handleDoubleClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    onClick();
+    if (!isMoved.current) {
+      onClick();
+    }
   };
 
   return (
@@ -161,27 +172,18 @@ export default function DesktopItem({
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
-      onPointerEnter={handlePointerEnter}
-      onPointerLeave={handlePointerLeave}
-      onDoubleClick={handleDoubleClick}
-      onClick={isMobile ? onClick : undefined}
-      style={{
-        position: isMobile ? "relative" : "absolute",
-        top: isMobile ? "auto" : 0,
-        left: isMobile ? "auto" : 0,
-        opacity: isVisible ? 1 : 0,
-        transition: isDragging ? "none" : "opacity 0.4s ease",
-      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="IconContainer">
-        <Image
+        <img
           src={iconSrc}
           alt={text}
-          width={50}
-          height={50}
+          width={48}
+          height={48}
           draggable={false}
         />
-        {hoverImage && isHovered && !isDragging && !isMobile && (
+        {isHovered && hoverImage && (
           <div className="HoverImageWrapper">
             <img src={hoverImage} alt="preview" />
           </div>

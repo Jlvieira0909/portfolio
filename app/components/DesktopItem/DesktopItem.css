@@ -13,7 +13,9 @@
   touch-action: none;
   user-select: none;
   will-change: transform;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: 10;
   outline: none;
   -webkit-tap-highlight-color: transparent;
@@ -49,6 +51,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .HoverImageWrapper {
