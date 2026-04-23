@@ -9,42 +9,41 @@ const DUMMY_DATA = [
   {
     id: "img1",
     src: "https://picsum.photos/seed/me/400/300",
-    label: "me",
+    label: "Myself",
     response:
-      "Sou o João Luiz! Um desenvolvedor Front-end & Designer apaixonado por criar experiências interativas.",
+      "Hello!! my name is João Luiz Vieira, I'm a web cretive who loves to blend the worlds between development and design",
   },
   {
     id: "img2",
     src: "https://picsum.photos/seed/setup/400/300",
-    label: "setup",
-    response:
-      "Esse é o meu cantinho. Adoro passar horas aqui programando e desenhando novas interfaces.",
+    label: "W/ girlfriend",
+    response: "I love my girlfriend so much!!!!",
   },
   {
     id: "img3",
     src: "https://picsum.photos/seed/hobby/400/300",
-    label: "hobbies",
+    label: "Hobbies",
     response:
       "Quando não estou codando, provavelmente estou jogando algum jogo retro ou explorando design gráfico vintage.",
   },
   {
     id: "img4",
     src: "https://picsum.photos/seed/coffee/400/300",
-    label: "fuel",
+    label: "Music",
     response:
       "Café é o meu combustível oficial para resolver bugs complexos no React e Next.js.",
   },
   {
     id: "img5",
     src: "https://picsum.photos/seed/travel/400/300",
-    label: "travel",
+    label: "Games",
     response:
       "Amo conhecer lugares novos. Sempre me inspira a trazer novas perspectivas para o meu design.",
   },
   {
     id: "img6",
     src: "https://picsum.photos/seed/friends/400/300",
-    label: "w/ friends",
+    label: "Design",
     response:
       "Aproveitar o tempo offline com a galera é essencial para manter a criatividade em alta.",
   },
@@ -75,7 +74,7 @@ export default function AboutMePage() {
       type: "text",
       sender: "system",
       content:
-        "Desenvolvedor Front-end e Designer. Eu adoro transformar ideias complexas em interfaces elegantes e funcionais.",
+        "Hello!! my name is João Luiz Vieira, I'm a web cretive who loves to blend the worlds between development and design",
     },
   ]);
 

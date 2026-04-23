@@ -77,7 +77,7 @@ const menus = [
       {
         name: "Find on Page",
         shortcut: "⌘F",
-        onClick: () => window.alert("Use ⌘+F ou Ctrl+F no seu navegador"),
+        onClick: () => window.alert("Use ⌘+F ou Ctrl+F on Your Browser"),
       },
     ],
   },

@@ -29,7 +29,7 @@ export default function Desktop({
       <div className="DesktopIntro">
         <div className="IntroImageContainer">
           <span className="IntroTextOverlay top">Hello,</span>
-          <span className="IntroTextOverlay bottom">i'm joão!</span>
+          <span className="IntroTextOverlay bottom">i'm João!</span>
           <img
             src="/images/portfolio001.png"
             alt="João Luiz"
