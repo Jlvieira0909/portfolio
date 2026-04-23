@@ -8,27 +8,52 @@ import "./projects.css";
 const dummyProjects = [
   {
     id: "demo",
-    title: "designing for better returns",
-    subtitle: "UX/UI Case Study",
-    image: "https://picsum.photos/seed/p1/600/400",
+    title: "Portfolio",
+    subtitle: "Web Portfolio",
+    image: "/images/portfolioThumb.png",
   },
   {
     id: "demo",
-    title: "automating kyc",
-    subtitle: "Product Design",
-    image: "https://picsum.photos/seed/p2/600/400",
+    title: "SuperTeam LP",
+    subtitle: "UI/UX Project for Crypto Website",
+    image: "/images/LpThumb.png",
   },
   {
     id: "demo",
-    title: "build better habits",
-    subtitle: "Mobile App",
-    image: "https://picsum.photos/seed/p3/600/400",
+    title: "Astroworld Posters",
+    subtitle: "Music Design Project",
+    image:
+      "https://mir-s3-cdn-cf.behance.net/project_modules/fs/05bb1c167477657.6429ec7d3fcdd.png",
   },
   {
     id: "demo",
-    title: "glimpse into your emotions",
-    subtitle: "Web Platform",
-    image: "https://picsum.photos/seed/p4/600/400",
+    title: "The Gallery",
+    subtitle: "Web Gallery For my Designs",
+    image: "/images/GalleryThumb.png",
+  },
+  {
+    id: "demo",
+    title: "Omni Design",
+    subtitle: "Web Porftolio for Industrial Deisgn",
+    image: "/images/OmniThumb.png",
+  },
+  {
+    id: "demo",
+    title: "WebPokédex",
+    subtitle: "Simple WebPokédex Utilizing API's",
+    image: "/images/pokedexThumb.png",
+  },
+  {
+    id: "demo",
+    title: "Sizebay Script Form",
+    subtitle: "Form for Scripts Creation",
+    image: "/images/ScriptFormThumb.png",
+  },
+  {
+    id: "demo",
+    title: "Sizebay Buttons Gallery",
+    subtitle: "Web Buttons Gallery",
+    image: "/images/SzbBtnsThumb.png",
   },
 ];
 

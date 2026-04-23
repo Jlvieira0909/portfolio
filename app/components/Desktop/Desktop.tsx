@@ -117,7 +117,7 @@ export default function Desktop({
           initialPosition={{ x: 220, y: -20 }}
         >
           <iframe
-            src="https://open.spotify.com/embed/playlist/"
+            src="https://open.spotify.com/embed/album/41GuZcammIkupMPKH2OJ6I?si=qAZ3ihuBSFefAuFRXBFh6g"
             width="100%"
             height="100%"
             frameBorder="0"

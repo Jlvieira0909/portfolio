@@ -5,9 +5,10 @@
   padding: 60px 80px;
   box-sizing: border-box;
   overflow-y: auto;
-  background-color: #fcfcfc;
+  background-color: var(--bg-desktop);
   scrollbar-width: none;
   -ms-overflow-style: none;
+  transition: background-color 0.3s ease;
 }
 
 .DesignContent::-webkit-scrollbar {
@@ -21,10 +22,10 @@
 
 .BackButton {
   text-decoration: none;
-  color: #333;
+  color: var(--text-primary);
   font-size: 13px;
   font-weight: 500;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s, color 0.3s ease;
 }
 
 .BackButton:hover {
@@ -33,9 +34,10 @@
 
 .DesignTitle {
   font-size: 12px;
-  color: #888;
+  color: var(--text-secondary);
   margin-top: 12px;
   font-weight: 400;
+  transition: color 0.3s ease;
 }
 
 .IntroLoader {
@@ -51,7 +53,7 @@
   height: 300px;
   object-fit: cover;
   border-radius: 4px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 40px var(--shadow-color);
 }
 
 .GalleryGrid {
@@ -66,12 +68,13 @@
   overflow: hidden;
   cursor: pointer;
   border-radius: 4px;
-  background-color: #eaeaea;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  background-color: var(--input-bg);
+  box-shadow: 0 4px 10px var(--shadow-color);
   opacity: 0;
   transform: scale(0.9);
   transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.2s ease;
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.2s ease,
+    background-color 0.3s ease;
 }
 
 .GalleryItem.loaded {
@@ -81,7 +84,7 @@
 
 .GalleryItem:hover {
   transform: scale(1.03) translateY(-4px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 30px var(--shadow-color);
 }
 
 .GalleryItem img {
@@ -97,16 +100,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f5f5f5;
+  background-color: var(--window-bg);
   padding: 24px;
   box-sizing: border-box;
+  transition: background-color 0.3s ease;
 }
 
 .PreviewImage {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px var(--shadow-color);
   border-radius: 2px;
 }
 

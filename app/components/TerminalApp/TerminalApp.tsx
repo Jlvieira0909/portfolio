@@ -72,7 +72,7 @@ export default function TerminalApp() {
             <span className="ColorYellow">Role:</span> Frontend Developer &
             Designer
             <br />
-            <span className="ColorYellow">Location:</span> Florianópolis, SC
+            <span className="ColorYellow">Location:</span> SC, Brazil
             <br />
             <br />
             <span className="ColorMagenta"> Executing startup scripts...</span>

@@ -1,216 +1,138 @@
 .SafariContainer {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  background: #fdfdfd;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif;
+  background: var(--window-bg);
+  transition: background-color 0.3s ease;
 }
 
 .SafariToolbar {
   display: flex;
   align-items: center;
-  padding: 8px 16px;
-  background: #f5f5f5;
-  border-bottom: 1px solid #ddd;
+  padding: 10px 16px;
+  background: var(--window-header);
+  border-bottom: 1px solid var(--border-color);
   gap: 16px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.SafariNavButtons {
+.SafariNavControls {
   display: flex;
-  gap: 8px;
+  gap: 12px;
 }
 
 .SafariNavBtn {
   background: none;
   border: none;
   font-size: 16px;
-  color: #666;
+  color: var(--text-primary);
   cursor: pointer;
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
+  transition: color 0.3s ease;
 }
 
-.SafariNavBtn:hover:not(:disabled) {
-  background: #e5e5e5;
+.SafariNavBtn.disabled {
+  color: var(--text-secondary);
+  opacity: 0.5;
+  cursor: default;
 }
 
-.SafariNavBtn:disabled {
-  color: #ccc;
-  cursor: not-allowed;
-}
-
-.SafariAddressBar {
+.SafariSearchBar {
   flex: 1;
   display: flex;
-}
-
-.SafariAddressBar input {
-  width: 100%;
-  padding: 6px 12px;
+  align-items: center;
+  background: var(--input-bg);
   border-radius: 6px;
-  border: 1px solid #dcdcdc;
-  background: #ffffff;
-  font-size: 13px;
-  outline: none;
-  text-align: center;
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.SafariAddressBar input:focus {
-  text-align: left;
-  border-color: #007aff;
+.SafariSearchBar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 13px;
+  color: var(--text-primary);
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.SafariSearchBar input::placeholder {
+  color: var(--text-secondary);
+}
+
+.SafariToolbarRight {
+  display: flex;
+  gap: 12px;
+  width: 44px;
 }
 
 .SafariContent {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow-y: auto;
-}
-
-.SafariIframe {
-  flex: 1;
-  width: 100%;
-  border: none;
-}
-
-.SafariHome {
-  padding: 40px 20px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: var(--window-bg);
+  overflow-y: auto;
+  transition: background-color 0.3s ease;
 }
 
-.SafariHome h2 {
-  font-size: 20px;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 32px;
+.SafariFavorites {
   width: 100%;
   max-width: 500px;
+}
+
+.SafariFavorites h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  transition: color 0.3s ease;
 }
 
 .SafariGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px 16px;
-  max-width: 500px;
-  width: 100%;
+  gap: 32px;
 }
 
-.SafariAppIcon {
+.SafariFavItem {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   cursor: pointer;
-  transition: transform 0.2s ease;
 }
 
-.SafariAppIcon:hover {
+.SafariFavItem:hover .SafariFavIcon {
   transform: scale(1.05);
 }
 
-.IconBox {
-  width: 64px;
-  height: 64px;
-  border-radius: 14px;
+.SafariFavIcon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
-  font-weight: bold;
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
-.IconBox.ln {
-  background: #0a66c2;
-}
-.IconBox.bh {
-  background: #0057ff;
-}
-.IconBox.ig {
-  background: linear-gradient(
-    45deg,
-    #f09433 0%,
-    #e6683c 25%,
-    #dc2743 50%,
-    #cc2366 75%,
-    #bc1888 100%
-  );
-}
-.IconBox.gh {
-  background: #24292e;
-}
-
-.SafariAppIcon span {
+.SafariFavItem span {
   font-size: 12px;
-  color: #333;
   font-weight: 500;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
-.SafariError {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  text-align: center;
-  background: #fdfdfd;
-}
-
-.ErrorIcon {
-  font-size: 48px;
-  margin-bottom: 16px;
-}
-
-.SafariError h3 {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 12px;
-}
-
-.SafariError p {
-  font-size: 14px;
-  color: #666;
-  max-width: 400px;
-  line-height: 1.5;
-  margin-bottom: 8px;
-}
-
-.ErrorSub {
-  font-size: 13px;
-  color: #999;
-  font-style: italic;
-  margin-bottom: 24px;
-}
-
-.ErrorBtn {
-  padding: 8px 16px;
-  background: #007aff;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.ErrorBtn:hover {
-  background: #005bb5;
-}
-
-@media (max-width: 600px) {
-  .SafariGrid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 400px) {
+@media (max-width: 768px) {
   .SafariGrid {
     grid-template-columns: repeat(2, 1fr);
   }

@@ -1,131 +1,80 @@
-import { useState } from "react";
+"use client";
+
 import "./SafariApp.css";
 
 export default function SafariApp() {
-  const [url, setUrl] = useState("home");
-  const [inputUrl, setInputUrl] = useState("");
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    let query = inputUrl.toLowerCase().trim();
-
-    if (query === "" || query === "home") {
-      setUrl("home");
-      setInputUrl("");
-      return;
-    }
-
-    const allowedUrls = [
-      "https://seu-projeto-1.vercel.app",
-      "https://seu-projeto-2.vercel.app",
-    ];
-
-    let checkUrl = query.startsWith("http") ? query : `https://${query}`;
-
-    if (allowedUrls.includes(checkUrl)) {
-      setUrl(checkUrl);
-      setInputUrl(checkUrl);
-    } else {
-      setUrl("error");
-    }
-  };
-
-  const openExternal = (link: string) => {
-    window.open(link, "_blank");
-  };
-
   return (
     <div className="SafariContainer">
       <div className="SafariToolbar">
-        <div className="SafariNavButtons">
-          <button
-            className="SafariNavBtn"
-            onClick={() => {
-              setUrl("home");
-              setInputUrl("");
-            }}
-          >
-            {"<"}
-          </button>
-          <button className="SafariNavBtn" disabled>
-            {">"}
-          </button>
+        <div className="SafariNavControls">
+          <button className="SafariNavBtn">{"<"}</button>
+          <button className="SafariNavBtn disabled">{">"}</button>
         </div>
-        <form className="SafariAddressBar" onSubmit={handleSearch}>
+        <div className="SafariSearchBar">
           <input
             type="text"
             placeholder="Search or enter website name"
-            value={inputUrl}
-            onChange={(e) => setInputUrl(e.target.value)}
+            readOnly
           />
-        </form>
+        </div>
+        <div className="SafariToolbarRight"></div>
       </div>
-
       <div className="SafariContent">
-        {url === "home" && (
-          <div className="SafariHome">
-            <h2>Favorites</h2>
-            <div className="SafariGrid">
-              <div
-                className="SafariAppIcon"
-                onClick={() => openExternal("https://linkedin.com/in/joaoluiz")}
-              >
-                <div className="IconBox ln">in</div>
-                <span>LinkedIn</span>
-              </div>
-              <div
-                className="SafariAppIcon"
-                onClick={() => openExternal("https://behance.net/")}
-              >
-                <div className="IconBox bh">Bē</div>
-                <span>Behance</span>
-              </div>
-              <div
-                className="SafariAppIcon"
-                onClick={() => openExternal("https://instagram.com/")}
-              >
-                <div className="IconBox ig">Ig</div>
-                <span>Instagram</span>
-              </div>
-              <div
-                className="SafariAppIcon"
-                onClick={() => openExternal("https://github.com/")}
-              >
-                <div className="IconBox gh">Gh</div>
-                <span>GitHub</span>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {url === "error" && (
-          <div className="SafariError">
-            <div className="ErrorIcon">⚠️</div>
-            <h3>Safari Cannot Open the Page</h3>
-            <p>
-              Safari can't open the page <strong>"{inputUrl}"</strong> because
-              the server enforces strict Cross-Origin Resource Sharing (CORS)
-              policies.
-            </p>
-            <p className="ErrorSub">
-              Em outras palavras: sites gigantes não permitem ser abertos dentro
-              de iframes por segurança.
-            </p>
-            <button
-              className="ErrorBtn"
-              onClick={() => {
-                setUrl("home");
-                setInputUrl("");
-              }}
+        <div className="SafariFavorites">
+          <h2>Favorites</h2>
+          <div className="SafariGrid">
+            <a
+              href="https://www.linkedin.com/in/joaoluizv/"
+              target="_blank"
+              rel="noreferrer"
+              className="SafariFavItem"
             >
-              Go Back
-            </button>
+              <div className="SafariFavIcon" style={{ background: "#0a66c2" }}>
+                in
+              </div>
+              <span>LinkedIn</span>
+            </a>
+            <a
+              href="https://www.behance.net/joaoluiz7"
+              target="_blank"
+              rel="noreferrer"
+              className="SafariFavItem"
+            >
+              <div className="SafariFavIcon" style={{ background: "#1769ff" }}>
+                Bē
+              </div>
+              <span>Behance</span>
+            </a>
+            <a
+              href="https://www.instagram.com/hypemind.inc"
+              target="_blank"
+              rel="noreferrer"
+              className="SafariFavItem"
+            >
+              <div
+                className="SafariFavIcon"
+                style={{
+                  background:
+                    "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
+                }}
+              >
+                Ig
+              </div>
+              <span>Instagram</span>
+            </a>
+            <a
+              href="https://github.com/Jlvieira0909"
+              target="_blank"
+              rel="noreferrer"
+              className="SafariFavItem"
+            >
+              <div className="SafariFavIcon" style={{ background: "#24292e" }}>
+                Gh
+              </div>
+              <span>GitHub</span>
+            </a>
           </div>
-        )}
-
-        {url !== "home" && url !== "error" && (
-          <iframe src={url} className="SafariIframe" title="Browser" />
-        )}
+        </div>
       </div>
     </div>
   );
