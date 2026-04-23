@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import HeaderItem from "../HeaderItem/HeaderItem";
+import { useTheme } from "../../context/ThemeContext";
 import "./Header.css";
 
 const menus = [
@@ -113,17 +114,17 @@ const menus = [
       {
         name: "About Me",
         shortcut: "⌘2",
-        onClick: () => (window.location.href = "/#about"),
+        onClick: () => (window.location.href = "/about-me"),
       },
       {
         name: "Projects",
         shortcut: "⌘3",
-        onClick: () => (window.location.href = "/#projects"),
+        onClick: () => (window.location.href = "/projects"),
       },
       {
         name: "Graphic Design",
         shortcut: "⌘4",
-        onClick: () => (window.location.href = "/#design"),
+        onClick: () => (window.location.href = "/design"),
       },
     ],
   },
@@ -147,6 +148,7 @@ export default function Header() {
   const [time, setTime] = useState<Date | null>(null);
   const [showCalendar, setShowCalendar] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     setTime(new Date());
@@ -277,6 +279,9 @@ export default function Header() {
       </div>
 
       <div className="HeaderInfo">
+        <button className="ThemeToggleBtn" onClick={toggleTheme}>
+          {theme === "dark" ? "☀️" : "🌙"}
+        </button>
         <div className="HeaderIcon DesktopOnly">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
             <path d="M16 4.00195C16.5523 4.00195 17 4.44967 17 5.00195V6.00195H22C22.5523 6.00195 23 6.44967 23 7.00195V17.002C23 17.5542 22.5523 18.002 22 18.002H2C1.44772 18.002 1 17.5542 1 17.002V7.00195C1 6.44967 1.44772 6.00195 2 6.00195H7V5.00195C7 4.44967 7.44772 4.00195 8 4.00195H16ZM21 8.00195H3V16.002H21V8.00195ZM6.5 9.50195C6.77614 9.50195 7 9.72581 7 10.002V14.002C7 14.2781 6.77614 14.502 6.5 14.502H4.5C4.22386 14.502 4 14.2781 4 14.002V10.002C4 9.72581 4.22386 9.50195 4.5 9.50195H6.5ZM10.5 9.50195C10.7761 9.50195 11 9.72581 11 10.002V14.002C11 14.2781 10.7761 14.502 10.5 14.502H8.5C8.22386 14.502 8 14.2781 8 14.002V10.002C8 9.72581 8.22386 9.50195 8.5 9.50195H10.5ZM14.5 9.50195C14.7761 9.50195 15 9.72581 15 10.002V14.002C15 14.2781 14.7761 14.502 14.5 14.502H12.5C12.2239 14.502 12 14.2781 12 14.002V10.002C12 9.72581 12.2239 9.50195 12.5 9.50195H14.5ZM19.5 9.50195C19.7761 9.50195 20 9.72581 20 10.002V14.002C20 14.2781 19.7761 14.502 19.5 14.502H16.5C16.2239 14.502 16 14.2781 16 14.002V10.002C16 9.72581 16.2239 9.50195 16.5 9.50195H19.5Z" />

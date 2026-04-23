@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --bg-desktop: #f4f5f7;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --window-bg: #ffffff;
+  --window-header: #f5f5f5;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --header-bg: rgba(255, 255, 255, 0.5);
+  --header-text: #000000;
+  --item-hover: rgba(0, 0, 0, 0.05);
+  --shadow-color: rgba(0, 0, 0, 0.15);
+  --chat-system: #e9e9eb;
+  --chat-system-text: #000000;
+  --input-bg: #f0f0f0;
+}
+
+[data-theme="dark"] {
+  --bg-desktop: #1a1b26;
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1;
+  --glass-bg: rgba(30, 30, 30, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --window-bg: #242526;
+  --window-header: #3a3b3c;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --header-bg: rgba(20, 20, 20, 0.6);
+  --header-text: #ffffff;
+  --item-hover: rgba(255, 255, 255, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --chat-system: #3a3b3c;
+  --chat-system-text: #ffffff;
+  --input-bg: #3a3b3c;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: var(--bg-desktop);
+  color: var(--text-primary);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

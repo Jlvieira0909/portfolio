@@ -2,7 +2,7 @@
   width: 100vw;
   height: calc(100vh - 28px);
   margin-top: 28px;
-  background-color: #f4f5f7;
+  background-color: var(--bg-desktop);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,19 +14,19 @@
   width: 100%;
   max-width: 1000px;
   height: 75vh;
-  background: #ffffff;
+  background: var(--window-bg);
   border-radius: 10px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 60px var(--shadow-color);
   display: flex;
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 .FinderSidebar {
   width: 220px;
-  background: rgba(245, 245, 247, 0.9);
-  border-right: 1px solid #e0e0e0;
+  background: var(--window-header);
+  border-right: 1px solid var(--border-color);
   padding: 20px 10px;
   overflow-y: auto;
 }
@@ -38,7 +38,7 @@
 .SidebarSection h3 {
   font-size: 11px;
   font-weight: 600;
-  color: #888;
+  color: var(--text-secondary);
   text-transform: uppercase;
   margin-bottom: 8px;
   padding-left: 10px;
@@ -52,7 +52,7 @@
 
 .SidebarSection li {
   font-size: 13px;
-  color: #333;
+  color: var(--text-primary);
   padding: 6px 10px;
   border-radius: 6px;
   cursor: pointer;
@@ -62,11 +62,11 @@
 }
 
 .SidebarSection li:hover {
-  background: rgba(0, 0, 0, 0.05);
+  background: var(--item-hover);
 }
 
 .SidebarSection li.active {
-  background: #dcdcdc;
+  background: var(--input-bg);
   font-weight: 500;
 }
 
@@ -96,7 +96,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: #ffffff;
+  background: var(--window-bg);
 }
 
 .FinderTopbar {
@@ -105,8 +105,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  border-bottom: 1px solid #e0e0e0;
-  background: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--window-bg);
 }
 
 .NavControls {
@@ -119,18 +119,18 @@
   background: none;
   border: none;
   font-size: 16px;
-  color: #555;
+  color: var(--text-secondary);
   cursor: pointer;
 }
 
 .NavControls button:disabled {
-  color: #ccc;
+  color: var(--border-color);
 }
 
 .CurrentFolder {
   font-size: 14px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .ViewControls {
@@ -141,7 +141,7 @@
 
 .ViewToggle {
   display: flex;
-  background: #f0f0f0;
+  background: var(--input-bg);
   border-radius: 6px;
   padding: 2px;
 }
@@ -151,19 +151,19 @@
   font-size: 14px;
   border-radius: 4px;
   cursor: pointer;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .ViewToggle span.active {
-  background: #ffffff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  color: #333;
+  background: var(--window-bg);
+  box-shadow: 0 1px 3px var(--shadow-color);
+  color: var(--text-primary);
 }
 
 .SearchBar {
   display: flex;
   align-items: center;
-  background: #f0f0f0;
+  background: var(--input-bg);
   padding: 4px 10px;
   border-radius: 6px;
   gap: 6px;
@@ -175,6 +175,7 @@
   outline: none;
   font-size: 13px;
   width: 120px;
+  color: var(--text-primary);
 }
 
 .FinderGrid {
@@ -197,11 +198,11 @@
 .ProjectThumbnail {
   width: 100%;
   aspect-ratio: 4/3;
-  background: #f5f5f5;
+  background: var(--input-bg);
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  border: 1px solid var(--border-color);
   margin-bottom: 12px;
   transition: transform 0.2s ease;
 }
@@ -218,14 +219,14 @@
 
 .ProjectInfo h4 {
   font-size: 13px;
-  color: #333;
+  color: var(--text-primary);
   margin: 0 0 4px 0;
   font-weight: 500;
 }
 
 .ProjectInfo p {
   font-size: 11px;
-  color: #888;
+  color: var(--text-secondary);
   margin: 0;
 }
 

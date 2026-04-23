@@ -11,7 +11,7 @@
   height: calc(100vh - 28px);
   height: calc(100dvh - 28px);
   margin-top: 28px;
-  background-color: #fcfcfc;
+  background-color: var(--bg-desktop);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,11 +25,11 @@
   max-width: 540px;
   height: 65vh;
   min-height: 450px;
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--glass-bg);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   border-radius: 12px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 25px 50px var(--shadow-color), 0 0 0 1px var(--border-color);
   display: flex;
   flex-direction: column;
   z-index: 20;
@@ -39,8 +39,8 @@
 
 .ChatHeader {
   height: 44px;
-  background: rgba(245, 245, 245, 0.9);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--window-header);
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -66,11 +66,9 @@
 .ChatHeaderBtn.close {
   background: #ff605c;
 }
-
 .ChatHeaderBtn.minimize {
   background: #ffbd44;
 }
-
 .ChatHeaderBtn.maximize {
   background: #00ca4e;
 }
@@ -80,7 +78,7 @@
   align-items: center;
   font-size: 13px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   gap: 8px;
 }
 
@@ -131,12 +129,12 @@
   font-size: 14px;
   line-height: 1.5;
   word-wrap: break-word;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 5px var(--shadow-color);
 }
 
 .MessageBubble.system {
-  background: #e9e9eb;
-  color: #000;
+  background: var(--chat-system);
+  color: var(--chat-system-text);
   border-bottom-left-radius: 4px;
 }
 
@@ -164,7 +162,7 @@
 .MessageBubble.image-bubble {
   padding: 0;
   background: transparent;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px var(--shadow-color);
   border-radius: 12px;
   overflow: hidden;
 }
@@ -179,7 +177,7 @@
 .ChatHint {
   text-align: center;
   font-size: 11px;
-  color: #aaa;
+  color: var(--text-secondary);
   margin-top: auto;
   padding-top: 20px;
 }
@@ -224,9 +222,9 @@
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px var(--shadow-color);
   transition: transform 0.1s ease;
-  border: 2px solid #fff;
+  border: 2px solid var(--border-color);
 }
 
 .MobileImageItem:active {
@@ -258,10 +256,10 @@
 }
 
 .FloatingImageContent {
-  background: #fff;
+  background: var(--window-bg);
   padding: 8px 8px 32px 8px;
   border-radius: 6px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 20px var(--shadow-color);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -301,7 +299,7 @@
 
 .FloatingImage.pressing .FloatingImageContent {
   transform: scale(0.95);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 10px var(--shadow-color);
 }
 
 .FloatingLabel {
@@ -309,7 +307,7 @@
   bottom: 8px;
   font-size: 11px;
   font-weight: 500;
-  color: #555;
+  color: var(--text-secondary);
   font-family: monospace;
 }
 

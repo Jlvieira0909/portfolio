@@ -1,90 +1,98 @@
 .HeaderContainer {
+  width: 100%;
+  height: 28px;
+  background-color: var(--header-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--header-text);
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 28px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  padding: 0 12px;
   z-index: 1000;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif;
-  user-select: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .HeaderNav {
   display: flex;
   align-items: center;
   height: 100%;
-  gap: 2px;
 }
 
 .HeaderInfo {
   display: flex;
   align-items: center;
   height: 100%;
+  padding-right: 12px;
   gap: 12px;
-  position: relative;
-  margin-right: 24px;
 }
 
 .HeaderIcon {
   display: flex;
   align-items: center;
-  opacity: 0.8;
+  justify-content: center;
 }
 
 .HeaderTime {
-  font-size: 13px;
-  font-weight: 500;
-  color: #000;
-  padding: 2px 8px;
-  border-radius: 4px;
   cursor: default;
-  transition: background-color 0.1s;
-}
-
-.HeaderItemContainer:has(svg) .HeaderItemLabel {
-  padding: 4px;
-}
-
-.HeaderItemContainer:has(svg):hover .HeaderItemLabel {
-  background-color: #f1f1f1;
+  display: flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
   border-radius: 4px;
-  cursor: pointer;
+  transition: background 0.1s;
 }
 
-.HeaderTime.active,
-.HeaderTime:active {
-  background-color: rgba(255, 255, 255, 0.5);
+.HeaderTime:hover,
+.HeaderTime.active {
+  background: var(--item-hover);
+}
+
+.ThemeToggleBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 4px;
+  transition: background 0.2s;
+  color: var(--header-text);
+}
+
+.ThemeToggleBtn:hover {
+  background: var(--item-hover);
 }
 
 .CalendarWidget {
   position: absolute;
-  top: 100%;
-  right: 0%;
-  margin-top: 8px;
-  background: rgba(245, 245, 245, 0.85);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  top: 32px;
+  right: 8px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  width: 260px;
   padding: 16px;
-  z-index: 100;
+  width: 260px;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  color: var(--text-primary);
+  z-index: 1100;
 }
 
 .CalendarHeader {
   font-weight: 600;
   font-size: 14px;
   margin-bottom: 12px;
-  color: #c93b3b;
+  text-align: center;
 }
 
 .CalendarGrid {
@@ -95,32 +103,53 @@
 }
 
 .CalendarDayName {
-  font-size: 10px;
+  font-size: 11px;
+  color: var(--text-secondary);
   font-weight: 600;
-  color: #888;
   margin-bottom: 4px;
 }
 
 .CalendarDay {
   font-size: 12px;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  border-radius: 50%;
+  padding: 6px 0;
+  border-radius: 4px;
+  cursor: default;
+}
+
+.CalendarDay:hover {
+  background: var(--item-hover);
 }
 
 .CalendarDay.today {
-  background-color: #3b7cff;
-  border-radius: 15%;
-  color: #fff;
-  font-weight: bold;
+  background: #0b84ff;
+  color: white;
+  font-weight: 600;
 }
 
 @media (max-width: 768px) {
   .DesktopOnly {
-    display: none;
+    display: none !important;
   }
+  .HeaderInfo {
+    gap: 8px;
+    padding-right: 8px;
+  }
+}
+
+[data-theme="dark"] .HeaderNav div[style*="absolute"] {
+  background-color: var(--glass-bg) !important;
+  border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] .HeaderNav li {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .HeaderNav li span {
+  color: inherit !important;
+}
+
+[data-theme="dark"] .HeaderNav li:hover {
+  background-color: #0b84ff !important;
+  color: #ffffff !important;
 }
