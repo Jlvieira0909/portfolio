@@ -311,6 +311,11 @@
   font-family: monospace;
 }
 
+.MessageBubble a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 @keyframes fillBlue {
   0% {
     width: 0%;

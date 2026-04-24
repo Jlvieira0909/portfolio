@@ -8,44 +8,45 @@ import "./about-me.css";
 const DUMMY_DATA = [
   {
     id: "img1",
-    src: "https://picsum.photos/seed/me/400/300",
+    src: "/images/AboutMe.jpeg",
     label: "Myself",
     response:
-      "Hello!! my name is João Luiz Vieira, I'm a web cretive who loves to blend the worlds between development and design",
+      "Hello! My name is João Luiz Vieira. I'm a web creative who loves to blend the worlds of development and design.",
   },
   {
     id: "img2",
-    src: "https://picsum.photos/seed/setup/400/300",
+    src: "/images/AboutLove.jpeg",
     label: "W/ girlfriend",
-    response: "I love my girlfriend so much!!!!",
+    response:
+      "My favorite thing in the world is sharing my life with my girlfriend! I love her more than anything in the world!!!",
   },
   {
     id: "img3",
-    src: "https://picsum.photos/seed/hobby/400/300",
+    src: "/images/AboutHobbies.jpeg",
     label: "Hobbies",
     response:
-      "Quando não estou codando, provavelmente estou jogando algum jogo retro ou explorando design gráfico vintage.",
+      "In my free time, I like to study design and technology. I also love creating new projects.",
   },
   {
     id: "img4",
-    src: "https://picsum.photos/seed/coffee/400/300",
+    src: "/images/AboutMusics.jpeg",
     label: "Music",
     response:
-      "Café é o meu combustível oficial para resolver bugs complexos no React e Next.js.",
+      "I'm very passionate about music. I listen to a diverse range of artists, but my absolute favorite is definitely Travis Scott. I love going to shows and festivals to discover new music.",
   },
   {
     id: "img5",
-    src: "https://picsum.photos/seed/travel/400/300",
+    src: "/images/AboutGames.jpeg",
     label: "Games",
     response:
-      "Amo conhecer lugares novos. Sempre me inspira a trazer novas perspectivas para o meu design.",
+      "My other favorite thing to do in my free time is play video games! My top favorites are Elden Ring, Cyberpunk 2077, and Hotline Miami. Here is <a href='https://steamcommunity.com/id/joaoluizzv/' target='_blank' rel='noopener noreferrer'>my Steam account</a> if you'd like to take a look.",
   },
   {
     id: "img6",
-    src: "https://picsum.photos/seed/friends/400/300",
+    src: "/images/AboutDesign.jpeg",
     label: "Design",
     response:
-      "Aproveitar o tempo offline com a galera é essencial para manter a criatividade em alta.",
+      "Besides programming and studying technology, I also have a deep passion for design! I'm always trying to bring my vision to life in every project I work on.",
   },
 ];
 
@@ -73,8 +74,7 @@ export default function AboutMePage() {
       id: "init2",
       type: "text",
       sender: "system",
-      content:
-        "Hello!! my name is João Luiz Vieira, I'm a web cretive who loves to blend the worlds between development and design",
+      content: "What would you like to know more about me?",
     },
   ]);
 
@@ -152,10 +152,10 @@ export default function AboutMePage() {
                   <div className={`MessageBubble ${msg.sender}`}>
                     {msg.sender === "system" && msg.content.includes("hi!") ? (
                       <span className="IntroText">
-                        <em>hi! i'm</em> <strong>joão luiz,</strong>
+                        <em>hi! I'm</em> <strong>João Luiz,</strong>
                       </span>
                     ) : (
-                      <p>{msg.content}</p>
+                      <p dangerouslySetInnerHTML={{ __html: msg.content }} />
                     )}
                   </div>
                 ) : (
@@ -193,14 +193,25 @@ export default function AboutMePage() {
             <div ref={messagesEndRef} />
           </div>
         </div>
-
-        {availableImages.map((img) => (
-          <FloatingImage
-            key={img.id}
-            data={img}
-            onSend={() => handleSendImage(img)}
-          />
-        ))}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            pointerEvents: "none",
+            zIndex: 100,
+          }}
+        >
+          {availableImages.map((img) => (
+            <FloatingImage
+              key={img.id}
+              data={img}
+              onSend={() => handleSendImage(img)}
+            />
+          ))}
+        </div>
       </div>
 
       <Dock
@@ -231,62 +242,100 @@ function FloatingImage({
   const isMoved = useRef(false);
 
   useEffect(() => {
-    const maxX = window.innerWidth - 180;
-    const maxY = window.innerHeight - 180;
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
+    const calculatePosition = () => {
+      const maxX = window.innerWidth - 180;
+      const maxY = window.innerHeight - 180;
 
-    const isOverlapping = (x: number, y: number) => {
-      if (
-        Math.abs(x - centerX + 75) < 320 &&
-        Math.abs(y - centerY + 50) < 300
-      ) {
-        return true;
+      const chatEl = document.getElementById("chat-dropzone");
+      let exclRect = { left: 0, right: 0, top: 0, bottom: 0 };
+
+      if (chatEl) {
+        const rect = chatEl.getBoundingClientRect();
+        exclRect = {
+          left: rect.left - 60,
+          right: rect.right + 60,
+          top: rect.top - 60,
+          bottom: rect.bottom + 60,
+        };
+      } else {
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        exclRect = {
+          left: centerX - 350,
+          right: centerX + 350,
+          top: centerY - 300,
+          bottom: centerY + 300,
+        };
       }
-      for (const pos of registeredImagePositions) {
-        if (pos.id !== data.id) {
-          if (Math.abs(x - pos.x) < 80 && Math.abs(y - pos.y) < 80) {
-            return true;
+
+      const isOverlapping = (x: number, y: number) => {
+        const photoRight = x + 160;
+        const photoBottom = y + 160;
+
+        if (
+          photoRight > exclRect.left &&
+          x < exclRect.right &&
+          photoBottom > exclRect.top &&
+          y < exclRect.bottom
+        ) {
+          return true;
+        }
+
+        for (const pos of registeredImagePositions) {
+          if (pos.id !== data.id) {
+            if (Math.abs(x - pos.x) < 120 && Math.abs(y - pos.y) < 120) {
+              return true;
+            }
           }
         }
+        return false;
+      };
+
+      let randomX = 0;
+      let randomY = 0;
+      let attempts = 0;
+      const maxAttempts = 2000;
+
+      do {
+        randomX = Math.floor(Math.random() * maxX);
+        randomY = Math.floor(Math.random() * maxY);
+        randomX = Math.max(20, randomX);
+        randomY = Math.max(50, randomY);
+        attempts++;
+      } while (isOverlapping(randomX, randomY) && attempts < maxAttempts);
+
+      if (attempts >= maxAttempts) {
+        const corners = [
+          { x: 20, y: 60 },
+          { x: window.innerWidth - 180, y: 60 },
+          { x: 20, y: window.innerHeight - 200 },
+          { x: window.innerWidth - 180, y: window.innerHeight - 200 },
+        ];
+        const fallback = corners[registeredImagePositions.length % 4];
+        randomX = fallback.x;
+        randomY = fallback.y;
       }
-      return false;
+
+      setPosition({ x: randomX, y: randomY });
+
+      registeredImagePositions = registeredImagePositions.filter(
+        (p) => p.id !== data.id
+      );
+      registeredImagePositions.push({ id: data.id, x: randomX, y: randomY });
+
+      if (itemRef.current) {
+        itemRef.current.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${
+          Math.random() * 20 - 10
+        }deg)`;
+      }
+
+      setTimeout(() => setIsVisible(true), Math.random() * 500);
     };
 
-    let randomX = 0;
-    let randomY = 0;
-    let attempts = 0;
-    const maxAttempts = 200;
-
-    do {
-      randomX = Math.floor(Math.random() * maxX);
-      randomY = Math.floor(Math.random() * maxY);
-      randomX = Math.max(20, Math.min(randomX, maxX));
-      randomY = Math.max(50, Math.min(randomY, maxY));
-      attempts++;
-    } while (isOverlapping(randomX, randomY) && attempts < maxAttempts);
-
-    if (attempts >= maxAttempts) {
-      randomX += Math.random() * 100 - 50;
-      randomY += Math.random() * 100 - 50;
-    }
-
-    setPosition({ x: randomX, y: randomY });
-
-    registeredImagePositions = registeredImagePositions.filter(
-      (p) => p.id !== data.id
-    );
-    registeredImagePositions.push({ id: data.id, x: randomX, y: randomY });
-
-    if (itemRef.current) {
-      itemRef.current.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${
-        Math.random() * 20 - 10
-      }deg)`;
-    }
-
-    setTimeout(() => setIsVisible(true), Math.random() * 500);
+    const timeout = setTimeout(calculatePosition, 100);
 
     return () => {
+      clearTimeout(timeout);
       registeredImagePositions = registeredImagePositions.filter(
         (p) => p.id !== data.id
       );
@@ -305,6 +354,10 @@ function FloatingImage({
       y: e.clientY - position.y,
     };
     e.currentTarget.setPointerCapture(e.pointerId);
+
+    if (itemRef.current) {
+      itemRef.current.style.zIndex = "1000";
+    }
 
     longPressTimer.current = setTimeout(() => {
       if (!isMoved.current) {
@@ -351,6 +404,7 @@ function FloatingImage({
       itemRef.current.style.transform = `translate(${position.x}px, ${
         position.y
       }px) rotate(${Math.random() * 10 - 5}deg)`;
+      itemRef.current.style.zIndex = "10";
     }
 
     const chatZone = document.getElementById("chat-dropzone");
@@ -382,6 +436,11 @@ function FloatingImage({
       }}
       style={{
         opacity: isVisible ? 1 : 0,
+        pointerEvents: "auto",
+        position: "absolute",
+        top: 0,
+        left: 0,
+        zIndex: 10,
       }}
     >
       <div className="FloatingImageContent">
