@@ -1,11 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, use } from "react";
 import Header from "../../components/Header/Header";
 import Dock from "../../components/Dock/Dock";
+import { projectsData } from "../../data/projectsData";
 import "./casestudy.css";
 
-export default function CaseStudyPage() {
+export default function ProjectDetailsPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const resolvedParams = use(params);
+  const slug = resolvedParams.slug;
+
   const [activeApps, setActiveApps] = useState<string[]>([]);
   const [focusedApp, setFocusedApp] = useState<string | null>(null);
 
@@ -18,65 +26,71 @@ export default function CaseStudyPage() {
     }
   };
 
+  const project = projectsData[slug];
+
+  if (!project) {
+    return (
+      <div className="MainPage">
+        <Header />
+        <div className="NotFoundContainer">
+          <h2>Project not found</h2>
+          <button onClick={() => (window.location.href = "/projects")}>
+            {"< back to projects"}
+          </button>
+        </div>
+        <Dock
+          activeApps={activeApps}
+          setFocusedApp={setFocusedApp}
+          toggleApp={toggleApp}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="MainPage">
       <Header />
 
-      <div className="CaseStudyContainer">
-        <div className="CaseStudyContent">
-          <a href="/projects" className="BackButton">
+      <div className="CaseStudyContent">
+        <div className="CaseStudyHeader">
+          <button
+            className="BackButton"
+            onClick={() => (window.location.href = "/projects")}
+          >
             {"< back"}
-          </a>
+          </button>
+          <span className="CaseStudyBreadcrumb">
+            projects &gt; {project.id}
+          </span>
+        </div>
 
-          <p className="Breadcrumb">portfolio &gt; UX/UI Design &gt; 2026</p>
-          <h1 className="CaseStudyTitle">designing for better returns</h1>
+        <div className="CaseStudyHero">
+          <img src={project.heroImage} alt={project.title} />
+        </div>
 
-          <div className="HeroImage">
-            <img src="https://picsum.photos/seed/hero/1200/600" alt="Hero" />
+        <div className="CaseStudyBody">
+          <div className="CaseStudyTitleArea">
+            <h1>{project.title}</h1>
+            <h2>{project.subtitle}</h2>
           </div>
 
-          <div className="OverviewGrid">
-            <div className="OverviewItem">
-              <h4>overview</h4>
-              <p>
-                Uma plataforma inovadora para melhorar o retorno de
-                investimentos.
-              </p>
+          <div className="CaseStudyMeta">
+            <div className="MetaColumn">
+              <span className="MetaLabel">ROLE</span>
+              <span className="MetaValue">{project.role}</span>
             </div>
-            <div className="OverviewItem">
-              <h4>role</h4>
-              <p>Product Designer, Front-end Developer</p>
+            <div className="MetaColumn">
+              <span className="MetaLabel">YEAR</span>
+              <span className="MetaValue">{project.year}</span>
             </div>
-            <div className="OverviewItem">
-              <h4>skills & tools</h4>
-              <p>Figma, React, TypeScript, Next.js</p>
+            <div className="MetaColumn">
+              <span className="MetaLabel">TOOLS</span>
+              <span className="MetaValue">{project.tools.join(", ")}</span>
             </div>
           </div>
 
-          <div className="CaseStudyBody">
-            <h2>The Challenge</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse varius enim in eros elementum tristique. Duis cursus,
-              mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam
-              libero vitae erat.
-            </p>
-
-            <img
-              src="https://picsum.photos/seed/content1/1000/500"
-              alt="Content 1"
-            />
-
-            <h2>The Solution</h2>
-            <p>
-              Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet.
-              Nunc ut sem vitae risus tristique posuere.
-            </p>
-
-            <img
-              src="https://picsum.photos/seed/content2/1000/500"
-              alt="Content 2"
-            />
+          <div className="CaseStudyDescription">
+            <p>{project.description}</p>
           </div>
         </div>
       </div>

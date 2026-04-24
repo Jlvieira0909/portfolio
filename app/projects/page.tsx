@@ -7,50 +7,50 @@ import "./projects.css";
 
 const dummyProjects = [
   {
-    id: "demo",
+    id: "Portfolio",
     title: "Portfolio",
     subtitle: "Web Portfolio",
     image: "/images/portfolioThumb.png",
   },
   {
-    id: "demo",
+    id: "cryptoLP",
     title: "SuperTeam LP",
     subtitle: "UI/UX Project for Crypto Website",
     image: "/images/LpThumb.png",
   },
   {
-    id: "demo",
+    id: "Astroworld",
     title: "Astroworld Posters",
     subtitle: "Music Design Project",
     image:
       "https://mir-s3-cdn-cf.behance.net/project_modules/fs/05bb1c167477657.6429ec7d3fcdd.png",
   },
   {
-    id: "demo",
+    id: "Gallery",
     title: "The Gallery",
     subtitle: "Web Gallery For my Designs",
     image: "/images/GalleryThumb.png",
   },
   {
-    id: "demo",
+    id: "Omni",
     title: "Omni Design",
     subtitle: "Web Porftolio for Industrial Deisgn",
     image: "/images/OmniThumb.png",
   },
   {
-    id: "demo",
+    id: "Pokedex",
     title: "WebPokédex",
     subtitle: "Simple WebPokédex Utilizing API's",
     image: "/images/pokedexThumb.png",
   },
   {
-    id: "demo",
+    id: "SzbForm",
     title: "Sizebay Script Form",
     subtitle: "Form for Scripts Creation",
     image: "/images/ScriptFormThumb.png",
   },
   {
-    id: "demo",
+    id: "SzbBtns",
     title: "Sizebay Buttons Gallery",
     subtitle: "Web Buttons Gallery",
     image: "/images/SzbBtnsThumb.png",

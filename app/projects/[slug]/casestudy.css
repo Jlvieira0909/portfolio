@@ -1,113 +1,147 @@
-.CaseStudyContainer {
-  width: 100vw;
-  height: calc(100vh - 28px);
-  margin-top: 28px;
-  background-color: #ffffff;
-  overflow-y: auto;
-  display: flex;
-  justify-content: center;
-  padding-bottom: 120px;
-}
-
 .CaseStudyContent {
   width: 100%;
-  max-width: 900px;
-  padding: 60px 40px;
+  height: calc(100vh - 28px);
+  margin-top: 28px;
+  padding: 40px 80px;
   box-sizing: border-box;
+  overflow-y: auto;
+  background-color: var(--bg-desktop);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  transition: background-color 0.3s ease;
+}
+
+.CaseStudyContent::-webkit-scrollbar {
+  display: none;
+}
+
+.CaseStudyHeader {
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .BackButton {
-  display: inline-block;
-  text-decoration: none;
-  color: #333;
+  background: none;
+  border: none;
   font-size: 13px;
-  font-weight: 500;
-  margin-bottom: 24px;
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  font-family: inherit;
+  transition: opacity 0.2s, color 0.3s ease;
+  width: fit-content;
 }
 
 .BackButton:hover {
   opacity: 0.6;
 }
 
-.Breadcrumb {
+.CaseStudyBreadcrumb {
   font-size: 12px;
-  color: #888;
-  margin: 0 0 8px 0;
+  color: var(--text-secondary);
+  font-weight: 400;
+  transition: color 0.3s ease;
 }
 
-.CaseStudyTitle {
-  font-size: 42px;
-  font-weight: 700;
-  color: #111;
-  margin: 0 0 40px 0;
-  line-height: 1.1;
-}
-
-.HeroImage {
-  width: 100%;
-  border-radius: 12px;
+.CaseStudyHero {
+  max-width: 900px;
+  margin: 0 auto 40px auto;
+  border-radius: 8px;
   overflow: hidden;
-  margin-bottom: 60px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 40px var(--shadow-color);
+  background-color: var(--input-bg);
 }
 
-.HeroImage img {
+.CaseStudyHero img {
   width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
   display: block;
 }
 
-.OverviewGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 40px;
-  margin-bottom: 60px;
+.CaseStudyBody {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-bottom: 120px;
 }
 
-.OverviewItem h4 {
-  font-size: 12px;
-  color: #888;
-  text-transform: uppercase;
-  margin: 0 0 8px 0;
-  font-weight: 600;
+.CaseStudyTitleArea h1 {
+  font-size: 32px;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
-.OverviewItem p {
-  font-size: 14px;
-  color: #333;
-  margin: 0;
-  line-height: 1.5;
-}
-
-.CaseStudyBody h2 {
-  font-size: 28px;
-  color: #111;
-  margin: 40px 0 20px 0;
-}
-
-.CaseStudyBody p {
+.CaseStudyTitleArea h2 {
   font-size: 18px;
-  line-height: 1.6;
-  color: #444;
-  margin: 0 0 30px 0;
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-bottom: 40px;
 }
 
-.CaseStudyBody img {
-  width: 100%;
-  border-radius: 8px;
-  margin: 20px 0 40px 0;
+.CaseStudyMeta {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color);
+}
+
+.MetaColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.MetaLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+}
+
+.MetaValue {
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.CaseStudyDescription p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-primary);
+  font-weight: 400;
+}
+
+.NotFoundContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-primary);
+  gap: 20px;
 }
 
 @media (max-width: 768px) {
   .CaseStudyContent {
     padding: 30px 20px;
   }
-  .CaseStudyTitle {
-    font-size: 32px;
+
+  .CaseStudyMeta {
+    flex-direction: column;
+    gap: 24px;
   }
-  .OverviewGrid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+
+  .CaseStudyTitleArea h1 {
+    font-size: 28px;
   }
 }
