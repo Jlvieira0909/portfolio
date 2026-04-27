@@ -9,7 +9,7 @@
 
 **[🔗 View Live Demo](https://www.joaoluiz.me/)**
 
-![Portfolio Preview](/images/portfolioThumb.png)
+![Portfolio Preview](https://github.com/Jlvieira0909/portfolio/blob/master/public/images/portfolioThumb.png?raw=true)
 _(Pro tip: replace the image above with a 5-second GIF of you dragging folders and opening the chat!)_
 
 ---
@@ -48,7 +48,7 @@ Want to run this OS on your local machine?
 
 ```bash
 # Clone the repository
-git clone [https://github.com/Jlvieira0909/portfolio.git](https://github.com/Jlvieira0909/portfolio.git)
+git clone https://github.com/Jlvieira0909/portfolio.git
 
 # Navigate to the directory
 cd portfolio
