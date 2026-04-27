@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💻 João Luiz | Interactive OS Portfolio
 
-## Getting Started
+[![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
-First, run the development server:
+> An interactive, OS-inspired web portfolio blending front-end development and graphic design.
+
+**[🔗 View Live Demo](https://www.joaoluiz.me/)**
+
+![Portfolio Preview](/images/portfolioThumb.png)
+_(Pro tip: replace the image above with a 5-second GIF of you dragging folders and opening the chat!)_
+
+---
+
+## ✨ Features
+
+This portfolio is not just a static page; it's a fully interactive experience designed to mimic a desktop environment, showcasing both technical logic and visual aesthetics.
+
+- 🖱️ **Interactive Desktop Environment:** Draggable folders and files with a custom collision-detection algorithm. Icons will never spawn on top of central images or text.
+- 💬 **Dynamic "About Me" Chat:** An interactive messaging interface where dragging and dropping floating polaroids triggers automated system responses.
+- 🌗 **Smart Theming (Dark/Light Mode):** Seamless theme transitions utilizing native CSS variables. Features advanced techniques like `mix-blend-mode: difference` so text perfectly contrasts against dynamic image backgrounds.
+- 🎲 **Dynamic Favicon Injection:** The site runs a client-side script that randomly injects 1 of 11 unique favicons every time the application is loaded or refreshed.
+- 📂 **Dynamic Routing:** A scalable `[slug]` based case-study architecture to easily add new design and development projects without duplicating layouts.
+
+---
+
+## 🛠️ Tech Stack
+
+**Core:** Next.js (App Router), React, TypeScript  
+**Styling:** Pure CSS3, CSS Modules, Native Variables, Keyframe Animations  
+**Design:** Figma, Adobe Photoshop, Adobe Illustrator
+
+---
+
+## 🧠 Architecture Highlight: The "Exclusion Zone" Math
+
+To keep the desktop environment feeling organic but structured, I wrote a custom `useEffect` hook that calculates a mathematical "Exclusion Zone" using `getBoundingClientRect()`.
+
+Whenever a user opens the page, the application scans the exact DOM position of the central images and UI elements, creating an invisible forcefield. This ensures that the randomized draggable folders (`Math.random()`) never overlap with important text or components, regardless of the user's screen size or device.
+
+---
+
+## 🚀 Local Installation
+
+Want to run this OS on your local machine?
 
 ```bash
+# Clone the repository
+git clone [https://github.com/Jlvieira0909/portfolio.git](https://github.com/Jlvieira0909/portfolio.git)
+
+# Navigate to the directory
+cd portfolio
+
+# Install dependencies
+npm install
+
+# Start the local server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
