@@ -10,7 +10,6 @@
 **[🔗 View Live Demo](https://www.joaoluiz.me/)**
 
 ![Portfolio Preview](https://github.com/Jlvieira0909/portfolio/blob/master/public/images/portfolioThumb.png?raw=true)
-_(Pro tip: replace the image above with a 5-second GIF of you dragging folders and opening the chat!)_
 
 ---
 
