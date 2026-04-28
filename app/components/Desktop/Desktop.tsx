@@ -53,28 +53,28 @@ export default function Desktop({
           id="projetos"
           text="Projects"
           iconSrc="/icons/Folder.png"
-          hoverImage="https://picsum.photos/seed/p1/100/100"
+          hoverImage="/design/Design01.jpg"
           onClick={() => (window.location.href = "/projects")}
         />
         <DesktopItem
           id="curriculo"
           text="Resume"
           iconSrc="/icons/Folder.png"
-          hoverImage="https://picsum.photos/seed/c1/100/100"
+          hoverImage="/images/LpThumb.png"
           onClick={() => window.open("/curriculo.pdf", "_blank")}
         />
         <DesktopItem
           id="sobre"
           text="About Me"
           iconSrc="/icons/Folder.png"
-          hoverImage="https://picsum.photos/seed/a1/100/100"
+          hoverImage="/design/Design08.jpg"
           onClick={() => (window.location.href = "/about-me")}
         />
         <DesktopItem
           id="design"
           text="Design"
           iconSrc="/icons/Folder.png"
-          hoverImage="https://picsum.photos/seed/d1/100/100"
+          hoverImage="/images/portfolioThumb.png"
           onClick={() => (window.location.href = "/design")}
         />
       </div>
